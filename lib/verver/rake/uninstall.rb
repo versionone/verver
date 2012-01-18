@@ -4,22 +4,21 @@ require 'rake/tasklib'
 module Verver
   module Rake
 
-    class Install < ::Rake::TaskLib
+    class Uninstall < ::Rake::TaskLib
+
       include ::Rake::DSL if defined?(::Rake::DSL)
-      attr_accessor :setup_exe, :instance, :instance_path, :license_file, :server, :fail_on_error, :verbose, :attempt_uninstall_first
+      attr_accessor :setup_exe, :instance, :server, :fail_on_error, :verbose
 
       def initialize(*args)
-        name = args.shift || :install
+        name = args.shift || :uninstall
         yield self if block_given?
 
         desc("install executable") unless ::Rake.application.last_comment
         task name do
           begin
-            command = "#{setup_exe} -quiet -DBServer=#{server} -WebDir=#{instance_path} #{instance}"
+            command = "#{setup_exe} -U -quiet -DBServer=#{server} -DeleteDatabase #{instance}"
             puts command if verbose
             success = system(command)
-
-            cp license_file, File.join(instance_path, 'bin'), :verbose => true if license_file
           rescue
             puts 'failure'
           end
@@ -31,3 +30,4 @@ module Verver
 
   end
 end
+
