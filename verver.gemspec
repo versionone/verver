@@ -15,7 +15,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Verver::VERSION
 
-  gem.add_dependency "rake", "~> 0.9.2"
-  gem.add_dependency "albacore", "~> 0.2.7"
+  gem.add_runtime_dependency "rake", "~> 0.9.2"
+  gem.add_runtime_dependency "albacore", "~> 0.2.7"
+
+  gem.add_development_dependency "rspec", "~> 2.8.0"
 
 end
