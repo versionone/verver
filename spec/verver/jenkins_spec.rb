@@ -4,6 +4,7 @@ describe Verver::Jenkins do
 
   describe ".job_name" do
     it "defaults to 'local-job'" do
+      ENV.stub(:[]).with('JOB_NAME').and_return(nil)
       Verver::Jenkins.job_name.should == 'local-job'
     end
 
@@ -15,6 +16,7 @@ describe Verver::Jenkins do
 
   describe ".build_number" do
     it "defaults to 0" do
+      ENV.stub(:[]).with('BUILD_NUMBER').and_return(nil)
       Verver::Jenkins.build_number.should == 0
     end
 
