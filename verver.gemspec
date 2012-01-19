@@ -16,7 +16,6 @@ Gem::Specification.new do |gem|
   gem.version       = Verver::VERSION
 
   gem.add_runtime_dependency "rake", "~> 0.9.2"
-  gem.add_runtime_dependency "tiny_tds", "~> 0.5.0"
   gem.add_runtime_dependency "nokogiri", "~> 1.5.0"
   gem.add_runtime_dependency "rest-client", "~> 1.6.7"
 

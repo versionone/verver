@@ -1,4 +1,3 @@
-require 'tiny_tds'
 require 'rest-client'
 require 'nokogiri'
 
