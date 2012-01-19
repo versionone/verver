@@ -5,5 +5,9 @@ module Verver
       ENV['SQL_SERVER'] || '.'
     end
 
+    def self.db_name
+      "#{Verver::Jenkins.job_name}_#{Verver::Jenkins.build_number}"
+    end
+
   end
 end
