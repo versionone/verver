@@ -2,7 +2,7 @@ module Verver
   module DataStore
 
     def self.server
-      ENV['SQL_SERVER'] || '.'
+      ENV['DB_SERVER'] || '.'
     end
 
     def self.db_name

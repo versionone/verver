@@ -5,14 +5,14 @@ describe Verver::DataStore do
   let(:data_store) { Verver::DataStore }
 
   describe ".server" do
-    let(:stub_server) { ENV.stub(:[]).with('SQL_SERVER') }
+    let(:stub_server) { ENV.stub(:[]).with('DB_SERVER') }
 
     it "defaults to '.'" do
       stub_server.and_return(nil)
       data_store.server.should == '.'
     end
 
-    it "is overridden by SQL_SERVER ENV variable" do
+    it "is overridden by DB_SERVER ENV variable" do
       stub_server.and_return('BobsServerName')
       data_store.server.should == 'BobsServerName'
     end
