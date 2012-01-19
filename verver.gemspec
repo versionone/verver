@@ -16,6 +16,13 @@ Gem::Specification.new do |gem|
   gem.version       = Verver::VERSION
 
   gem.add_runtime_dependency "rake", "~> 0.9.2"
+<<<<<<< HEAD
+=======
+  gem.add_runtime_dependency "albacore", "~> 0.2.7"
+  gem.add_runtime_dependency "tiny_tds", "~> 0.5.0"
+  gem.add_runtime_dependency "nokogiri", "~> 1.5.0"
+  gem.add_runtime_dependency "rest-client", "~> 1.6.7"
+>>>>>>> loader imported
 
   gem.add_development_dependency "rspec", "~> 2.8.0"
   gem.add_development_dependency "ci_reporter", "~> 1.6.9"
