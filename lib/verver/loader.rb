@@ -2,11 +2,11 @@ require 'tiny_tds'
 require 'rest-client'
 require 'nokogiri'
 
-require_relative './loader/config'
-require_relative './loader/utility'
-require_relative './loader/model'
-require_relative './loader/api'
-require_relative './loader/dsl'
+require 'verver/loader/config'
+require 'verver/loader/utility'
+require 'verver/loader/model'
+require 'verver/loader/api'
+require 'verver/loader/dsl'
 
 #@scope = find_or_create :scope do |f|
 #
