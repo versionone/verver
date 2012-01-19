@@ -13,5 +13,9 @@ module Verver
       ENV['DB_SERVER_USER'] || 'pub'
     end
 
+    def self.create_sql
+      File.join(File.expand_path('..', __FILE__), %w[support create_db.sql])
+    end
+
   end
 end
