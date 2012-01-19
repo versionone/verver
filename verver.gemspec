@@ -18,5 +18,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency "rake", "~> 0.9.2"
 
   gem.add_development_dependency "rspec", "~> 2.8.0"
+  gem.add_development_dependency "ci_reporter", "~> 1.6.9"
 
 end
