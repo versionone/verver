@@ -85,6 +85,7 @@ describe Verver::Loader::FindOrCreateOperation do
       end
 
     end
+
     context "via Asset objects" do
 
       subject do
