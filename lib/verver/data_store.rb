@@ -9,5 +9,9 @@ module Verver
       "#{Verver::Jenkins.job_name}_#{Verver::Jenkins.build_number}"
     end
 
+    def self.user
+      ENV['DB_SERVER_USER'] || 'pub'
+    end
+
   end
 end

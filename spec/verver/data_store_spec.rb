@@ -26,4 +26,18 @@ describe Verver::DataStore do
     end
   end
 
+  describe ".user" do
+    let(:stub_user) { ENV.stub(:[]).with('DB_SERVER_USER')}
+
+    it "defaults to 'pub'" do
+      stub_user.and_return(nil)
+      data_store.user.should == 'pub'
+    end
+
+    it "is overridden by DB_SERVER_USER ENV variable" do
+      stub_user.and_return('corp\bob')
+      data_store.user.should == 'corp\bob'
+    end
+  end
+
 end
