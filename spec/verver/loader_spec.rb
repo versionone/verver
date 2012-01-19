@@ -87,7 +87,27 @@ describe Verver::Loader::FindOrCreateOperation do
     end
     context "via Asset objects" do
 
+      subject do
+
+        asset = double("Asset")
+        asset.stub(:oid) { 'Role:200' }
+
+        order = Verver::Loader::FindOrCreateOperation.new :an_asset do |op|
+          op.relations do |r|
+            r.default_role asset
+          end
+        end
+
+        order.render[:data]['Relation'][0]
+
+      end
+
+      it "should contain a single asset, 'Role:200'" do
+        subject['Asset'][0]["idref"].should eql('Role:200')
+      end
+
     end
+
   end
 
   context "specifying mvrs"
