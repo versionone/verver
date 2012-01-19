@@ -4,9 +4,7 @@ describe Verver::Loader::FindOrCreateOperation do
 
   context "when rendered" do
     subject do
-      op = Verver::Loader::FindOrCreateOperation.new :asset do |op|
-
-      end
+      op = Verver::Loader::FindOrCreateOperation.new(:asset) { |op| }
       op.render
     end
     its([:data]) { should include('Attribute') }
@@ -42,9 +40,56 @@ describe Verver::Loader::FindOrCreateOperation do
     its(['name']) { should eql('FirstName') } # TODO: make API responsible for translating case
     its(['content']) { should eql('bob') }
     its(['act']) { should eql('set') } # TODO: API should set this key/value
+
+    context "when the lookup attribute is specified in the attributes collection" do
+      subject do
+        order = Verver::Loader::FindOrCreateOperation.new :an_asset do |op|
+          op.lookup :title, 'foo'
+          op.attributes do |a|
+            a.title 'bar'
+          end
+        end
+        order.render[:data]['Attribute'][0]
+      end
+
+      it "the lookup attribute value wins" do
+        subject['content'].should eql('foo')
+      end
+    end
+
   end
 
-  context "specifying relations"
+  context "specifying relations" do
+
+    context "via string oids" do
+
+      subject do
+        order = Verver::Loader::FindOrCreateOperation.new :an_asset do |op|
+          op.relations do |r|
+            r.default_role 'Role:100'
+          end
+        end
+        order.render[:data]['Relation'][0]
+      end
+
+      it "name should be 'DefaultRole'" do
+        subject['name'].should eql('DefaultRole')
+      end
+
+      it "should contain a single asset, 'Role:100'" do
+        subject['Asset'][0]["idref"].should eql('Role:100')
+      end
+
+      it "should contain an act key with the value set" do
+        subject['act'].should eql('set')
+      end
+
+    end
+    context "via Asset objects" do
+
+    end
+  end
+
   context "specifying mvrs"
 
 end

@@ -103,8 +103,8 @@ module Verver
         @collection ||= {}
       end
 
-      def append_with(&block)
-        block.call(self)
+      def append_with
+        yield self
         self
       end
 
