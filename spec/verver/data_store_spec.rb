@@ -40,15 +40,28 @@ describe Verver::DataStore do
     end
   end
 
-  describe ".create_sql" do
+  describe "paths to sql scripts" do
     let(:lib_root) { File.join(File.expand_path("../../..", __FILE__), 'lib') }
-    let(:create_file) { File.join(lib_root, %w[verver support create_db.sql]) }
 
-    it "is the path to support/create_db.sql" do
-      data_store.create_sql.should == create_file
+    describe ".create_sql" do
+      let(:create_file) { File.join(lib_root, %w[verver support create_db.sql]) }
+
+      it "is the path to support/create_db.sql" do
+        data_store.create_sql.should == create_file
+      end
+
+      specify { File.exists?(create_file).should be_true }
     end
 
-    specify { File.exists?(create_file).should be_true }
+    describe ".drop_sql" do
+      let(:drop_file) { File.join(lib_root, %w[verver support drop_db.sql]) }
+
+      it "is the path to support/drop_db.sql" do
+        data_store.drop_sql.should == drop_file
+      end
+
+      specify { File.exists?(drop_file).should be_true }
+    end
   end
 
 end

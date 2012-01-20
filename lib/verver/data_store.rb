@@ -17,5 +17,9 @@ module Verver
       File.join(File.expand_path('..', __FILE__), %w[support create_db.sql])
     end
 
+    def self.drop_sql
+      File.join(File.expand_path('..', __FILE__), %w[support drop_db.sql])
+    end
+
   end
 end
