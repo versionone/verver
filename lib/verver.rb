@@ -1,5 +1,8 @@
 require "verver/version"
+require "rake"
 
 module Verver
-  # Your code goes here...
+  def self.root
+    Rake.application.original_dir
+  end
 end
