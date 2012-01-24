@@ -1,5 +1,6 @@
 module Verver
   module IIS
+
     class Components
 
       KEYNAME = 'SOFTWARE\\Microsoft\\InetStp\\Components'.freeze
@@ -18,5 +19,6 @@ module Verver
       end
 
     end
+
   end
 end

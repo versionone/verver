@@ -10,12 +10,12 @@ describe Verver::IIS::Components do
       hive.stub(:open).with(Verver::IIS::Components::KEYNAME) { registry }
     end
 
-    it "reports installed when their registry value is 1" do
+    it "is installed when their registry value is 1" do
       registry.stub(:[]).with("ManagementScriptingTools") { 1 }
       components.should be_installed(:management_scripting_tools)
     end
 
-    it "reports not installed when their registry value is 0" do
+    it "is not installed when their registry value is 0" do
       registry.stub(:[]).with("ManagementScriptingTools") { 0 }
       components.should_not be_installed(:management_scripting_tools)
     end
