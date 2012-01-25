@@ -2,7 +2,15 @@ require "verver/version"
 require "rake"
 
 module Verver
-  def self.rake_root
-    Rake.application.original_dir
+  def self.root
+    original_dir
   end
+
+  private
+
+  def self.original_dir
+    ROOT
+  end
+
+  ROOT = Dir.pwd
 end
