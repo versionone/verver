@@ -33,7 +33,7 @@ module Verver
     end
 
     def database_server
-      "(local)"
+      @options.fetch(:database_server) { "(local)" }
     end
 
     def path

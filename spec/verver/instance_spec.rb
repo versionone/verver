@@ -42,8 +42,15 @@ describe Verver::Instance do
       end
     end
 
-    it "#database_server is (local)" do
-      instance.database_server.should == "(local)"
+    describe "#database_server" do
+      it "defaults to (local)" do
+        instance.database_server.should == "(local)"
+      end
+
+      it "can be overridden" do
+        options[:database_server] = "server_of_data"
+        instance.database_server.should == "server_of_data"
+      end
     end
 
     it "#installer uses the first VersionOne.Setup*.exe it finds in the workding directory" do
