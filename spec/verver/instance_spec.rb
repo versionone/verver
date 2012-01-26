@@ -2,14 +2,22 @@ require 'spec_helper'
 require 'verver/instance'
 
 describe Verver::Instance do
-  describe "defaults for a new instance" do
-    let(:instance) { Verver::Instance.new }
+  describe "options for a new instance" do
+    let(:options) { Hash.new }
+    let(:instance) { Verver::Instance.new(options) }
     before do
       Verver::Jenkins.stub(job_name: 'Bobs-Job', build_number: 42)
     end
 
-    it "#name is built from Jenkins job name and build number" do
-      instance.name.should == "Bobs-Job_42"
+    describe "#name" do
+      it "defaults to Jenkins job name and build number" do
+        instance.name.should == "Bobs-Job_42"
+      end
+
+      it "can be overridden" do
+        options[:name] = 'Alices_old_thing'
+        instance.name.should == 'Alices_old_thing'
+      end
     end
 
     it '#path is C:\inetpub\wwwroot\ + instance name' do

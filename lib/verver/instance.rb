@@ -20,8 +20,12 @@ require 'verver/jenkins'
 module Verver
   class Instance
 
+    def initialize(options={})
+      @options = options
+    end
+
     def name
-      "#{Jenkins.job_name}_#{Jenkins.build_number}"
+      @options.fetch(:name) { "#{Jenkins.job_name}_#{Jenkins.build_number}" }
     end
 
     def database_name
