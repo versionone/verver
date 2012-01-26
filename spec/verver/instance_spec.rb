@@ -54,7 +54,7 @@ describe Verver::Instance do
     end
 
     describe "#installer" do
-      it "defaults to the first VersionOne.Setup*.exe it finds in the workding directory" do
+      it "defaults to the first VersionOne.Setup*.exe it finds in the working directory" do
         installer = 'VersionOne.Setup-FooBar-12.3.4.5678.exe'
         transient_file(File.join(Verver.root, installer)) do
           instance.installer.should be_end_with(installer)
@@ -67,8 +67,13 @@ describe Verver::Instance do
       end
     end
 
-    it "#license is the Dev license" do
-      instance.license.should == "VersionOne.Dev.lic"
+    describe "#license" do
+      it "defaults to the first license it finds in the working directory" do
+        license = File.join(Verver.root, 'VersionOne.Dev.lic')
+        transient_file(license) do
+          instance.license.should == license
+        end
+      end
     end
 
   end

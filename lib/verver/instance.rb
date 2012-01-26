@@ -45,7 +45,7 @@ module Verver
     end
 
     def license
-      "VersionOne.Dev.lic"
+      @options.fetch(:license) { first_local_license }
     end
 
     def install!
@@ -56,7 +56,15 @@ module Verver
     private
 
     def first_local_installer
-      Dir.glob(File.join(Verver.root, "VersionOne.Setup-*.exe")).first
+      first_local_file("VersionOne.Setup-*.exe")
+    end
+
+    def first_local_license
+      first_local_file("VersionOne.Dev.lic")
+    end
+
+    def first_local_file(name)
+      Dir.glob(File.join(Verver.root, name)).first
     end
 
   end
