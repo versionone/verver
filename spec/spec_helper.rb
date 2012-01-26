@@ -1,6 +1,8 @@
 
 def transient_file(path)
-  f = File.open(path, 'w')
-  yield
-  File.delete(f)
+  tranny = File.open(path, 'w') do |f|
+    yield
+    f
+  end
+  File.delete(tranny)
 end
