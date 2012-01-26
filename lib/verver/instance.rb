@@ -3,16 +3,19 @@ require 'verver/jenkins'
 
 # An instance of the V1 app.
 #
-# app = Verver::Instance.new
-# app.install(options)
+# app = Verver::Instance.new(options)
+# app.install!
 # app.name
 # app.database
-# app.uninstall
+# app.uninstall!
 #
 # install an instance, run the block, uninstall the app.
 # Verver::Instance.execute(installer_options) do |instance|
-#
+#   # ...
 # end
+#
+# app = Verver::Instance.install(options)
+# Verver::Instance.uninstall(options)
 
 module Verver
   class Instance
