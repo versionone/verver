@@ -29,7 +29,7 @@ module Verver
     end
 
     def database_name
-      name
+      @options.fetch(:database_name) { name }
     end
 
     def database_server

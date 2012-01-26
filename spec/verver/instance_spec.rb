@@ -31,8 +31,15 @@ describe Verver::Instance do
       end
     end
 
-    it "#database_name is the same as name" do
-      instance.database_name.should == instance.name
+    describe "#database_name" do
+      it "defaults to #name" do
+        instance.database_name.should == instance.name
+      end
+
+      it "can be overridden" do
+        options[:database_name] = 'the-dater-base'
+        instance.database_name.should == 'the-dater-base'
+      end
     end
 
     it "#database_server is (local)" do
