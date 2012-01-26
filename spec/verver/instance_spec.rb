@@ -36,4 +36,16 @@ describe Verver::Instance do
     end
 
   end
+
+  describe "#install!" do
+    let(:instance) { Verver::Instance.new }
+    let(:installer_cmd) { 'VersionOne-Setup.exe -quiet -DBServer=(local) -WebDir=C:\inetpub\wwwroot\Bobs-Job_42 Bobs-Job_42' }
+
+    it "shells out to the installer" do
+      instance.stub(installer: "VersionOne-Setup.exe", name: "Bobs-Job_42")
+      instance.should_receive(:system).with(installer_cmd) { 1 }
+
+      instance.install!
+    end
+  end
 end

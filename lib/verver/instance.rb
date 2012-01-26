@@ -41,6 +41,11 @@ module Verver
       "VersionOne.Dev.lic"
     end
 
+    def install!
+      command = "#{installer} -quiet -DBServer=#{database_server} -WebDir=#{path} #{name}"
+      system(command)
+    end
+
   end
 end
 
