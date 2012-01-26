@@ -74,6 +74,11 @@ describe Verver::Instance do
           instance.license.should == license
         end
       end
+
+      it "can be overridden" do
+        options[:license] = "~/licenses/bob.lic"
+        instance.license.should == "~/licenses/bob.lic"
+      end
     end
 
   end
