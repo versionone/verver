@@ -20,8 +20,15 @@ describe Verver::Instance do
       end
     end
 
-    it '#path is C:\inetpub\wwwroot\ + instance name' do
-      instance.path.should == 'C:\inetpub\wwwroot\Bobs-Job_42'
+    describe "#path" do
+      it 'defaults to C:\inetpub\wwwroot\ + instance name' do
+        instance.path.should == 'C:\inetpub\wwwroot\Bobs-Job_42'
+      end
+
+      it "can be overridden" do
+        options[:path] = 'D:\the_internets\are\here\my-instance'
+        instance.path.should == 'D:\the_internets\are\here\my-instance'
+      end
     end
 
     it "#database_name is the same as name" do

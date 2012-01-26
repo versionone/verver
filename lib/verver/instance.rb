@@ -37,7 +37,7 @@ module Verver
     end
 
     def path
-      "C:\\inetpub\\wwwroot\\#{name}"
+      @options.fetch(:path) { "C:\\inetpub\\wwwroot\\#{name}" }
     end
 
     def installer
