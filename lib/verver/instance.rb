@@ -41,7 +41,7 @@ module Verver
     end
 
     def installer
-      Dir.glob(File.join(Verver.root, "VersionOne.Setup-*.exe")).first
+      @options.fetch(:installer) { first_local_installer }
     end
 
     def license
@@ -51,6 +51,12 @@ module Verver
     def install!
       command = "#{installer} -quiet -DBServer=#{database_server} -WebDir=#{path} #{name}"
       system(command)
+    end
+
+    private
+
+    def first_local_installer
+      Dir.glob(File.join(Verver.root, "VersionOne.Setup-*.exe")).first
     end
 
   end

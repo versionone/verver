@@ -53,10 +53,17 @@ describe Verver::Instance do
       end
     end
 
-    it "#installer uses the first VersionOne.Setup*.exe it finds in the workding directory" do
-      installer = 'VersionOne.Setup-FooBar-12.3.4.5678.exe'
-      transient_file(File.join(Verver.root, installer)) do
-        instance.installer.should be_end_with(installer)
+    describe "#installer" do
+      it "defaults to the first VersionOne.Setup*.exe it finds in the workding directory" do
+        installer = 'VersionOne.Setup-FooBar-12.3.4.5678.exe'
+        transient_file(File.join(Verver.root, installer)) do
+          instance.installer.should be_end_with(installer)
+        end
+      end
+
+      it "can be overridden" do
+        options[:installer] = "~/install_it.exe"
+        instance.installer.should == "~/install_it.exe"
       end
     end
 
