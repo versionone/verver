@@ -49,6 +49,13 @@ module Verver
       # Log the command about to be run? Perhaps use the Logging Gem?
       success = system(command)
       install_license(success)
+      success
+    end
+
+    def uninstall!
+      command = "#{installer} -U -quiet -DeleteDatabase #{name}"
+      # Log the command about to be run? Perhaps use the Logging Gem?
+      success = system(command)
     end
 
     private

@@ -112,4 +112,15 @@ describe Verver::Instance do
       instance.install!
     end
   end
+
+  describe "#uninstall!" do
+    let(:instance) { Verver::Instance.new }
+    let(:uninstaller_cmd) { 'VersionOne-Setup.exe -U -quiet -DeleteDatabase Bobs-Job_42' }
+
+    it "shells out to the uninstaller" do
+      instance.stub(installer: "VersionOne-Setup.exe", name: "Bobs-Job_42")
+      instance.should_receive(:system).with(uninstaller_cmd)
+      instance.uninstall!
+    end
+  end
 end
