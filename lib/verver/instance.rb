@@ -1,5 +1,6 @@
 require 'verver'
 require 'verver/jenkins'
+require 'verver/sandboxed_execute'
 
 module Verver
   # An instance of the V1 app.
@@ -15,6 +16,7 @@ module Verver
   #   # ...
   # end
   class Instance
+    extend SandboxedExecute
 
     def initialize(options={})
       @options = options
