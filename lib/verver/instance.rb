@@ -1,23 +1,19 @@
 require 'verver'
 require 'verver/jenkins'
 
-# An instance of the V1 app.
-#
-# app = Verver::Instance.new(options)
-# app.install!
-# app.name
-# app.database
-# app.uninstall!
-#
-# install an instance, run the block, uninstall the app.
-# Verver::Instance.execute(installer_options) do |instance|
-#   # ...
-# end
-#
-# app = Verver::Instance.install(options)
-# Verver::Instance.uninstall(options)
-
 module Verver
+  # An instance of the V1 app.
+  #
+  # app = Verver::Instance.new(options)
+  # app.install!
+  # app.name
+  # app.database
+  # app.uninstall!
+  #
+  # install an instance, run the block, uninstall the app.
+  # Verver::Instance.execute(installer_options) do |instance|
+  #   # ...
+  # end
   class Instance
 
     def initialize(options={})
@@ -70,6 +66,7 @@ module Verver
     end
 
     def install_license(install_succeeded)
+      # consider either logging what we're about to do, or use :verbose => true option.
       FileUtils.copy(license, File.join(path, 'bin')) if install_succeeded and license
     end
 
