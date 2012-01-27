@@ -1,13 +1,19 @@
 module Verver
   module SandboxedExecute
 
-    def execute(instance_options={}, &safe_block)
-      instance = new(instance_options)
-      successful_install = instance.install!
+    def execute(install_options={}, &safe_block)
+      instance = new(install_options)
+      return unless instance.install!
 
-      safe_block.call(instance) if successful_install
+      __execute_in_sandbox(instance, safe_block)
+    end
+
+    private
+
+    def __execute_in_sandbox(instance, safe_block)
+      safe_block.call(instance)
     ensure
-      instance.uninstall! if successful_install
+      instance.uninstall!
     end
 
   end
