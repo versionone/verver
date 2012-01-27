@@ -51,7 +51,8 @@ module Verver
     def install!
       command = "#{installer} -quiet -DBServer=#{database_server} -WebDir=#{path} #{name}"
       # Log the command about to be run? Perhaps use the Logging Gem?
-      system(command)
+      success = system(command)
+      install_license(success)
     end
 
     private
@@ -66,6 +67,10 @@ module Verver
 
     def first_local_file(name)
       Dir.glob(File.join(Verver.root, name)).first
+    end
+
+    def install_license(install_succeeded)
+      FileUtils.copy(license, File.join(path, 'bin')) if install_succeeded and license
     end
 
   end

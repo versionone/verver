@@ -86,10 +86,28 @@ describe Verver::Instance do
   describe "#install!" do
     let(:instance) { Verver::Instance.new }
     let(:installer_cmd) { 'VersionOne-Setup.exe -quiet -DBServer=(local) -WebDir=C:\inetpub\wwwroot\Bobs-Job_42 Bobs-Job_42' }
+    let(:success) { true }
 
     it "shells out to the installer" do
       instance.stub(installer: "VersionOne-Setup.exe", name: "Bobs-Job_42")
-      instance.should_receive(:system).with(installer_cmd) { 1 }
+      instance.should_receive(:system).with(installer_cmd) { success }
+
+      instance.install!
+    end
+
+    it "copies the license file after successful install" do
+      instance.stub(:system) { success }
+      instance.stub(:license) { "some/path/Bob.lic" }
+      instance.stub(:path) { "instance/path" }
+      FileUtils.should_receive(:copy).with("some/path/Bob.lic", "instance/path/bin")
+
+      instance.install!
+    end
+
+    it "does not copy the file when install fails" do
+      instance.stub(:system) { not success }
+      instance.stub(:license) { "some/path/Bob.lic" }
+      FileUtils.should_not_receive(:copy)
 
       instance.install!
     end
