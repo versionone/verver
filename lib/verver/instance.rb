@@ -50,6 +50,7 @@ module Verver
 
     def install!
       command = "#{installer} -quiet -DBServer=#{database_server} -WebDir=#{path} #{name}"
+      # Log the command about to be run? Perhaps use the Logging Gem?
       system(command)
     end
 

@@ -14,3 +14,4 @@ rdoc
 spec/reports
 tmp
 *.swp
+*.swo
