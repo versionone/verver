@@ -5,9 +5,9 @@ module Verver
       instance = new(instance_options)
       successful_install = instance.install!
 
-      safe_block.call(instance)
+      safe_block.call(instance) if successful_install
     ensure
-      instance.uninstall!# if successful_install
+      instance.uninstall! if successful_install
     end
 
   end
