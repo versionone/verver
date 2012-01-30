@@ -1,5 +1,4 @@
 require "verver/version"
-require "rake"
 
 module Verver
   def self.root
