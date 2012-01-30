@@ -1,6 +1,9 @@
 module Verver
   module IIS
 
+    # Manage an IIS AppPool
+    #
+    # app_pool = Verver::IIS::AppPool.new('DefaultAppPool')
     # app_pool.stop
     # app_pool.start
     # app_pool.recycle

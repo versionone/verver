@@ -1,6 +1,10 @@
 module Verver
   module IIS
 
+    # A wrapper over the IIS Components Registry Hive.
+    #
+    # components = Verver::ISS:Components.new
+    # components.installed?(:management_scripting_tools) #=> true/false
     class Components
 
       KEYNAME = 'SOFTWARE\\Microsoft\\InetStp\\Components'.freeze
