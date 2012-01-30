@@ -21,7 +21,20 @@ module Verver
         super(iis_automation)
       end
 
+      def method_missing(name, *args)
+        if __getobj__.ole_respond_to?(name)
+          __getobj__.send(name, *args)
+        else
+          super(name, *args)
+        end
+      end
+
+      def respond_to_missing?(name, include_private)
+        ole_respond_to?(name) || super(name, include_private)
+      end
+
     end
 
   end
 end
+

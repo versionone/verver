@@ -16,6 +16,7 @@ describe Verver::IIS::Automation do
   describe "using an IIS Automation" do
     it "passes messages onto the Win32ole-based IIS Administration object" do
       win32ole_fake.stub(:connect) { iis_automation }
+      iis_automation.stub(:ole_respond_to?) { true }
       iis_automation.should_receive(:get).with("SomeKey='MyValue'")
 
       Verver::IIS::Automation.new(win32ole_fake).get("SomeKey='MyValue'")
