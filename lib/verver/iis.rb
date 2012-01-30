@@ -11,6 +11,7 @@ module Verver
     def self.ensure_management_scripting_tools_installed!(components=Components.new)
       installed = components.installed?(:management_scripting_tools)
       fail(ComponentNotInstalled) unless installed
+      installed
     end
 
   end
