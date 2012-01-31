@@ -23,7 +23,6 @@ describe Verver::Loader::FindOrCreateOperation do
   end
 
   context "attributes" do
-
     subject do
       order = Verver::Loader::FindOrCreateOperation.new :an_asset do |op|
         op.attributes do |a|
@@ -56,11 +55,9 @@ describe Verver::Loader::FindOrCreateOperation do
         subject['content'].should eql('foo')
       end
     end
-
   end
 
-  context "specifying relations" do
-
+  context "relations" do
     context "via string oids" do
 
       subject do
@@ -111,6 +108,39 @@ describe Verver::Loader::FindOrCreateOperation do
 
   end
 
-  context "specifying mvrs"
+  context "mvrs" do
+    context "of one asset" do
+      subject do
+        asset1 = double("Asset")
+        asset1.stub(:oid) { 'Role:200' }
+
+        order = Verver::Loader::FindOrCreateOperation.new :an_asset do |op|
+          op.mvrs do |m|
+            m.children asset1
+          end
+        end
+
+        order.render[:data]['MVR'][0]
+      end
+
+      its(['name']) {should include("Children")}
+
+      it "should contain a single asset" do
+        subject['Asset'].should
+      end
+
+      it "the asset should have an oid 'Role:200'" do
+
+      end
+
+      it "the asset should have the add action" do
+
+      end
+
+    end
+    context "of multiple assets" do
+
+    end
+  end
 
 end
