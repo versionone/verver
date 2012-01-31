@@ -9,7 +9,7 @@ module Verver
 
       KEYNAME = 'SOFTWARE\\Microsoft\\InetStp\\Components'.freeze
 
-      def initialize(hive=Win32::Registry::HKEY_LOCAL_MACHINE)
+      def initialize(hive=::Win32::Registry::HKEY_LOCAL_MACHINE)
         @registry = hive.open(KEYNAME)
       end
 
