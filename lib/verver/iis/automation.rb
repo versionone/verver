@@ -1,8 +1,8 @@
 require 'delegate'
 
 begin require 'win32ole'
-rescue LoadError # FUCKING HACKY! Must be on UNIX, just fake it.
-  module ::WIN32OLE; end
+rescue LoadError
+  puts "[WARN] RubyGem 'win32ole' not installed. Are you on UNIX?"
 end
 
 module Verver

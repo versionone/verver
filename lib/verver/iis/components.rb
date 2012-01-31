@@ -1,3 +1,8 @@
+begin require 'win32console'
+rescue LoadError
+  puts "[WARN] RubyGem 'win32console' not installed. Are you on UNIX?"
+end
+
 module Verver
   module IIS
 
