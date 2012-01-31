@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency "nokogiri", "~> 1.5.0"
   gem.add_runtime_dependency "rest-client", "~> 1.6.7"
   # So that we can develop and run specs on UNIX boxes, only require on Windows.
-  gem.add_runtime_dependency 'win32console' if gem.platform.to_s == 'x86-mswin32'
+  gem.add_runtime_dependency 'win32console' if gem.platform.to_s =~ /mswin32/ || gem.platform.to_s =~ /mingw32/
 
   gem.add_development_dependency "rspec", "~> 2.8.0"
   gem.add_development_dependency "ci_reporter", "~> 1.6.9"
