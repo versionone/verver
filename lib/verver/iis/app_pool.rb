@@ -11,9 +11,31 @@ module Verver
     # app_pool.recycle
     class AppPool < SimpleDelegator
 
+      STATES = [:starting, :started, :stopping, :stopped, :unknown].freeze
+
       def initialize(name, iis_automation=Automation.new)
         app_pool = iis_automation.get(app_pool_key(name))
         super(app_pool)
+      end
+
+      def starting?
+        state == :starting
+      end
+
+      def started?
+        state == :started
+      end
+
+      def stopping?
+        state == :stopping
+      end
+
+      def stopped?
+        state == :stopped
+      end
+
+      def unknown?
+        state == :unknown
       end
 
       def method_missing(name, *args)
@@ -32,6 +54,10 @@ module Verver
 
       def app_pool_key(name)
         "ApplicationPool.Name='#{name}'"
+      end
+
+      def state
+        STATES[getstate]
       end
 
     end

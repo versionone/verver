@@ -18,5 +18,32 @@ describe Verver::IIS::AppPool do
     app_pool_wrapper.should_receive(:start)
     app_pool.start
   end
+
+  describe "checking status" do
+    it "is starting when state = 0" do
+      app_pool_wrapper.stub(:getstate) { 0 }
+      app_pool.should be_starting
+    end
+
+    it "is started when state = 1" do
+      app_pool_wrapper.stub(:getstate) { 1 }
+      app_pool.should be_started
+    end
+
+    it "is stopping when state = 2" do
+      app_pool_wrapper.stub(:getstate) { 2 }
+      app_pool.should be_stopping
+    end
+
+    it "is stopped when state = 3" do
+      app_pool_wrapper.stub(:getstate) { 3 }
+      app_pool.should be_stopped
+    end
+
+    it "is unknown when state = 4" do
+      app_pool_wrapper.stub(:getstate) { 4 }
+      app_pool.should be_unknown
+    end
+  end
 end
 
