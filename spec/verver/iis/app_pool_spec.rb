@@ -1,3 +1,4 @@
+require 'rspec-spies'
 require 'verver/iis/app_pool'
 
 describe Verver::IIS::AppPool do
