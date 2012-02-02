@@ -8,7 +8,7 @@ module Verver
   # app = Verver::Instance.new(options)
   # app.install!
   # app.name
-  # app.database
+  # app.database_name
   # app.uninstall!
   #
   # install an instance, run the block, uninstall the app.
