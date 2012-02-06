@@ -8,7 +8,7 @@ module Verver
 
       def initialize(config)
         api_url = "#{config.app_url}rest-1.v1/Data"
-        @data_connection = RestClient::Resource.new(api_url, config.username, config.password)
+        @data_connection = RestClient::Resource.new(api_url, config.login, config.password)
       end
 
       def post(asset, xml)

@@ -7,8 +7,8 @@ module Verver
         ENV['APP_URL'] || 'http://localhost/VersionOne.Web/'
       end
 
-      def username
-        ENV['USERNAME'] || 'admin'
+      def login
+        ENV['LOGIN'] || 'admin'
       end
 
       def password

@@ -2,13 +2,29 @@ require "verver/loader/config"
 
 describe Verver::Loader::Config do
 
-  context "when a complete set of environment variables are available" do
+  subject { Verver::Loader::Config.new() }
 
-    subject { Verver::Loader::Config.new() }
+  context "when environment variables are not specified" do
+
+    it "Config#app_url should equal the default 'http://localhost/VersionOne.Web'" do
+      subject.app_url.should eql('http://localhost/VersionOne.Web/')
+    end
+
+    it "Config#login should equal the default 'admin'" do
+      subject.login.should eql('admin')
+    end
+
+    it "Config#password should equal the default 'admin'" do
+      subject.password.should eql('admin')
+    end
+
+  end
+
+  context "when a complete set of environment variables are available" do
 
     before do
       ENV['APP_URL'] = "http://testsite.com/app/"
-      ENV['USERNAME'] = "bob"
+      ENV['LOGIN'] = "bob"
       ENV['PASSWORD'] = "passw0rd"
     end
 
@@ -16,8 +32,8 @@ describe Verver::Loader::Config do
       subject.app_url.should eql('http://testsite.com/app/')
     end
 
-    it "Config#username reads the USERNAME environment variable" do
-      subject.username.should eql('bob')
+    it "Config#login reads the LOGIN environment variable" do
+      subject.login.should eql('bob')
     end
 
     it "Config#app_url reads the PASSWORD environment variable" do
