@@ -33,7 +33,7 @@ Verver has couple of primary objects and modules. They are:
 
 ### Verver::Instance
 
-An abstraction over an instance of the VersionOne Appliation.
+An abstraction over an instance of the VersionOne Application.
 
     require 'verver/instance'
 
@@ -83,7 +83,7 @@ can start, stop, recycle, etc., app pools.
 
 ### Verver::Jenkins
 
-Provides a consisten interface for getting information out of a
+Provides a consistent interface for getting information out of a
 Jenkins Job. This could be extended in the future to allow controlling
 and creating Jenkins jobs.
 
@@ -106,6 +106,10 @@ A simple abstraction over Erb templating.
 
     doc = Verver::Document.new('/path/to/template.erb')
     doc.interpolate(:name => 'Bob', :age => 42) #=> Hi, my name is Bob, and I am 42 years old.
+
+### Verver::Loader
+
+Load assets via the VersionOne API.
 
 ## Contributing
 
