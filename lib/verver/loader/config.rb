@@ -4,7 +4,7 @@ module Verver
     module Config
 
       def self.app_url
-        ENV['APP_URL'] || 'http://localhost/VersionOne.Web/'
+        (ENV['APP_URL'] || 'http://localhost/VersionOne.Web').sub(/\/$/, '')
       end
 
       def self.login
