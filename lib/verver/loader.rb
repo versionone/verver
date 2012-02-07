@@ -5,6 +5,7 @@ require 'verver/loader/config'
 require 'verver/loader/utility'
 require 'verver/loader/model'
 require 'verver/loader/api'
+require 'verver/loader/api2'
 require 'verver/loader/dsl'
 
 #@scope = find_or_create :scope do |f|

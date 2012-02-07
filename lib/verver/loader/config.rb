@@ -1,19 +1,20 @@
 module Verver
   module Loader
 
-    class Config
+    module Config
 
-      def app_url
+      def self.app_url
         ENV['APP_URL'] || 'http://localhost/VersionOne.Web/'
       end
 
-      def login
+      def self.login
         ENV['LOGIN'] || 'admin'
       end
 
-      def password
+      def self.password
         ENV['PASSWORD'] || 'admin'
       end
+
     end
 
   end

@@ -2,11 +2,11 @@ require "verver/loader/config"
 
 describe Verver::Loader::Config do
 
-  subject { Verver::Loader::Config.new() }
+  subject { Verver::Loader::Config }
 
   context "when environment variables are not specified" do
 
-    it "Config#app_url should equal the default 'http://localhost/VersionOne.Web'" do
+    it "Config#app_url should equal the default 'http://localhost/VersionOne.Web/'" do
       subject.app_url.should eql('http://localhost/VersionOne.Web/')
     end
 
