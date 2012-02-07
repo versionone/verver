@@ -1,4 +1,3 @@
-require 'spec_helper'
 require 'verver/instance'
 
 describe Verver::Instance do

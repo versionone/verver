@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://admin:admin@localhost/VersionOne.Web/rest-1.v1/Data/Member
+    body: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '2227'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Expires:
+      - '-1'
+      Server:
+      - Microsoft-IIS/7.5
+      Set-Cookie:
+      - .V1.LastAccess.VersionOne.Web.20=; expires=Wed, 08-Feb-2012 20:41:57 GMT;
+        path=/; HttpOnly
+      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWlug56YKMazzgj/Pzf0dSjKKxDJWCj5k/gakGDmUT/HkcJ+;
+        path=/; HttpOnly
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 07 Feb 2012 20:41:57 GMT
+    body: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<Assets total=\"2\"
+      pageSize=\"2147483647\" pageStart=\"0\">\r\n\t<Asset href=\"/VersionOne.Web/rest-1.v1/Data/Member/20\"
+      id=\"Member:20\">\r\n\t\t<Attribute name=\"Phone\" />\r\n\t\t<Attribute name=\"Ideas\"
+      />\r\n\t\t<Attribute name=\"SecurityScope.Name\" />\r\n\t\t<Attribute name=\"Name\">Administrator</Attribute>\r\n\t\t<Relation
+      name=\"DefaultRole\">\r\n\t\t\t<Asset href=\"/VersionOne.Web/rest-1.v1/Data/Role/1\"
+      idref=\"Role:1\" />\r\n\t\t</Relation>\r\n\t\t<Attribute name=\"Username\">admin</Attribute>\r\n\t\t<Relation
+      name=\"SecurityScope\" />\r\n\t\t<Attribute name=\"Followers.Name\" />\r\n\t\t<Attribute
+      name=\"AssetType\">Member</Attribute>\r\n\t\t<Attribute name=\"DefaultRole.Name\">Role.Name'System
+      Admin</Attribute>\r\n\t\t<Attribute name=\"Email\" />\r\n\t\t<Attribute name=\"Description\"
+      />\r\n\t\t<Attribute name=\"SendConversationEmails\">true</Attribute>\r\n\t\t<Attribute
+      name=\"NotifyViaEmail\">false</Attribute>\r\n\t\t<Relation name=\"Followers\"
+      />\r\n\t\t<Attribute name=\"IsLoginDisabled\">false</Attribute>\r\n\t\t<Attribute
+      name=\"UsesLicense\">false</Attribute>\r\n\t\t<Attribute name=\"Nickname\">Admin</Attribute>\r\n\t\t<Attribute
+      name=\"AssetState\">64</Attribute>\r\n\t\t<Attribute name=\"Followers.Nickname\"
+      />\r\n\t</Asset>\r\n\t<Asset href=\"/VersionOne.Web/rest-1.v1/Data/Member/1024\"
+      id=\"Member:1024\">\r\n\t\t<Attribute name=\"Phone\" />\r\n\t\t<Attribute name=\"Ideas\"
+      />\r\n\t\t<Attribute name=\"SecurityScope.Name\" />\r\n\t\t<Attribute name=\"Name\">Bob</Attribute>\r\n\t\t<Relation
+      name=\"DefaultRole\">\r\n\t\t\t<Asset href=\"/VersionOne.Web/rest-1.v1/Data/Role/1\"
+      idref=\"Role:1\" />\r\n\t\t</Relation>\r\n\t\t<Attribute name=\"Username\">Bob</Attribute>\r\n\t\t<Relation
+      name=\"SecurityScope\" />\r\n\t\t<Attribute name=\"Followers.Name\" />\r\n\t\t<Attribute
+      name=\"AssetType\">Member</Attribute>\r\n\t\t<Attribute name=\"DefaultRole.Name\">Role.Name'System
+      Admin</Attribute>\r\n\t\t<Attribute name=\"Email\" />\r\n\t\t<Attribute name=\"Description\"
+      />\r\n\t\t<Attribute name=\"SendConversationEmails\">true</Attribute>\r\n\t\t<Attribute
+      name=\"NotifyViaEmail\">true</Attribute>\r\n\t\t<Relation name=\"Followers\"
+      />\r\n\t\t<Attribute name=\"IsLoginDisabled\">false</Attribute>\r\n\t\t<Attribute
+      name=\"UsesLicense\">true</Attribute>\r\n\t\t<Attribute name=\"Nickname\">Bob</Attribute>\r\n\t\t<Attribute
+      name=\"AssetState\">64</Attribute>\r\n\t\t<Attribute name=\"Followers.Nickname\"
+      />\r\n\t</Asset>\r\n</Assets>"
+    http_version: !!null 
+  recorded_at: Tue, 07 Feb 2012 20:41:57 GMT
+recorded_with: VCR 2.0.0.rc1
