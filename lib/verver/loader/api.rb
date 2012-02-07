@@ -16,6 +16,7 @@ module Verver
           response = @data_connection[asset].post(xml.to_s, :content_type => 'text/xml')
         rescue => e
           puts e.response
+          raise
         end
         return Nokogiri::XML::Document.parse(response.to_s)
       end
