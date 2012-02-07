@@ -28,7 +28,7 @@ describe Verver::Loader::API2 do
         member = subject.lookup(:member, 'ID', 'Scope:32')
       end
 
-      #member.class.name.should == 'Asset'
+
 
     end
 
