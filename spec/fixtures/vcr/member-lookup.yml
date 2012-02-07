@@ -1,0 +1,53 @@
+--- 
+http_interactions: 
+- request: 
+    method: get
+    uri: http://admin:admin@localhost/VersionOne.Web/rest-1.v1/Data/Member?where=ID='Scope:32'
+    body: ""
+    headers: {}
+
+  response: 
+    status: 
+      code: 400
+      message: Bad Request
+    headers: 
+      Cache-Control: 
+      - no-cache
+      Pragma: 
+      - no-cache
+      Content-Length: 
+      - "1633"
+      Content-Type: 
+      - text/xml; charset=utf-8
+      Expires: 
+      - "-1"
+      Server: 
+      - Microsoft-IIS/7.5
+      Set-Cookie: 
+      - .V1.LastAccess.VersionOne.Web.20=; expires=Wed, 08-Feb-2012 21:50:54 GMT; path=/; HttpOnly
+      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWluhTdRys+zzgj/Pzf0dSjKKxB6ugbqglSKkAp9sb6SLFYp; path=/; HttpOnly
+      X-Powered-By: 
+      - ASP.NET
+      Date: 
+      - Tue, 07 Feb 2012 21:50:54 GMT
+    body: |-
+      <Error href="/VersionOne.Web/rest-1.v1/Data/Member?where=ID='Scope:32'">
+      	<Message>Invalid WHERE parameter</Message>
+      	<Exception class="System.FormatException">
+      		<Message>Invalid QueryFilter2 token ID='Scope:32'</Message>
+      		<Stack>   at VersionOne.QueryFilterTerm.AddTokenTerm(String token, INameResolver nameResolver) in C:\work\Core\VersionOne\Query.cs:line 1211
+         at VersionOne.QueryFilter2.FromToken(String token, INameResolver resolver) in C:\work\Core\VersionOne\Query.cs:line 1324
+         at VersionOne.Web.Api.ApiProcessors.BaseQueryProcessor.AddQueryFilter(IAssetType assettype, IQuery2 q) in C:\work\Core\VersionOne.Web\Api\ApiProcessors\BaseProcessors.cs:line 238</Stack>
+      	</Exception>
+      	<Exception class="VersionOne.OidException">
+      		<Message>Wrong OID AssetType: Scope:32</Message>
+      		<Stack>   at VersionOne.Meta.AttributeDefinitionCoerce.Coerce(Object value, AttributeType attributeType, IAssetType relatedAssetType, IMetaModel metaModel) in C:\work\Core\VersionOne\Meta\AttributeDefinition.cs:line 44
+         at VersionOne.Meta.AttributeDefinition.Coerce(Object value) in C:\work\Core\VersionOne\Meta\AttributeDefinition.cs:line 674
+         at VersionOne.QueryFilterTerm.ProcessAttributeTerm(AST term, INameResolver resolver, QueryFilterTerm filter) in C:\work\Core\VersionOne\Query.cs:line 1262
+         at VersionOne.QueryFilterTerm.ProcessFilter(AST filterterm, INameResolver resolver, QueryFilterTerm filter) in C:\work\Core\VersionOne\Query.cs:line 1222
+         at VersionOne.QueryFilterTerm.AddTokenTerm(String token, INameResolver nameResolver) in C:\work\Core\VersionOne\Query.cs:line 1205</Stack>
+      	</Exception>
+      </Error>
+    http_version: 
+  recorded_at: Tue, 07 Feb 2012 21:50:54 GMT
+recorded_with: VCR 2.0.0.rc1

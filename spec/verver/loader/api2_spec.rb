@@ -24,8 +24,8 @@ describe Verver::Loader::API2 do
 
     it "returns members" do
 
-      VCR.use_cassette('crackho') do
-        member = subject.lookup(:member, 'Scope:32')
+      VCR.use_cassette('member-lookup', :match_requests_on => [:uri, :body, :headers] ) do
+        member = subject.lookup(:member, 'ID', 'Scope:32')
       end
 
       #member.class.name.should == 'Asset'

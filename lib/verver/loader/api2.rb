@@ -7,10 +7,15 @@ module Verver
     class API2
 
       include HTTParty
-      base_uri "#{Verver::Loader::Config.app_url.sub(/\/$/, '')}/rest-1.v1/Data/"
+      include Config
 
-      def lookup(asset, oid)
-        self.class.get("/#{asset.to_s.capitalize}", {basic_auth: {username: 'admin', password: 'admin'}})
+      def lookup(asset, attribute_name, attribute_value)
+
+        self.class.base_uri "#{app_url.sub(/\/$/, '')}/rest-1.v1/Data/"
+
+        path = "/#{asset.to_s.capitalize}?where=#{attribute_name}='#{attribute_value}'"
+        self.class.get(path, {basic_auth: {username: login, password: password}})
+
       end
 
     end

@@ -2,7 +2,13 @@ require "verver/loader/config"
 
 describe Verver::Loader::Config do
 
-  subject { Verver::Loader::Config }
+  subject do
+    configuration_consumer = Class.new do
+      extend Verver::Loader::Config
+    end
+    configuration_consumer
+  end
+
 
   context "when environment variables are not specified" do
 

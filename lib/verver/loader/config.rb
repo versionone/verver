@@ -3,15 +3,15 @@ module Verver
 
     module Config
 
-      def self.app_url
+      def app_url
         (ENV['APP_URL'] || 'http://localhost/VersionOne.Web').sub(/\/$/, '')
       end
 
-      def self.login
+      def login
         ENV['LOGIN'] || 'admin'
       end
 
-      def self.password
+      def password
         ENV['PASSWORD'] || 'admin'
       end
 
