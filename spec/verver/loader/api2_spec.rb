@@ -1,12 +1,13 @@
 require 'verver/loader/api2'
-#require 'verver/loader/config'
 
 describe Verver::Loader::API2 do
 
   subject { Verver::Loader::API2 }
 
+  let(:expected_app_url) { "#{Verver::Loader::Config.app_url.sub(/\/$/, '')}/rest-1.v1/Data" }
+
   its(:ancestors) { should include(HTTParty) }
-  its(:base_uri) { should eql(Verver::Loader::Config.app_url.sub(/\/$/,'')) }
+  its(:base_uri) { should eql(expected_app_url) }
 
   # GET and POST come as part of including HTTParty
   # but thought it might be helpful to specify our

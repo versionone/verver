@@ -8,7 +8,9 @@ module Verver
 
       include HTTParty
 
-      base_uri Verver::Loader::Config.app_url
+      #.sub(/\/$/, '')
+
+      base_uri "#{Verver::Loader::Config.app_url.sub(/\/$/, '')}/rest-1.v1/Data"
 
     end
 
