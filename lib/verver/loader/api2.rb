@@ -1,21 +1,54 @@
 require 'httparty'
+require 'nokogiri'
 require 'verver/loader/config'
+require 'verver/loader/utility'
+require 'verver/loader/model'
 
 module Verver
   module Loader
 
+    # retrieves and creates assets from the versionone rest api
+    # maps assets into ruby objects {Verver::Loader::Asset}
     class API2
 
       include HTTParty
       include Config
+      include Utility
+
+      def initialize()
+        # set base_uri and get ready to HTTParty!
+        self.class.base_uri "#{app_url.sub(/\/$/, '')}/rest-1.v1/Data/"
+      end
 
       def lookup(asset, attribute_name, attribute_value)
+        path = build_query_for(asset, {attribute_name => attribute_value})
+        response = self.class.get(path, {basic_auth: {username: login, password: password}})
+        xml = Nokogiri::XML::Document.parse(response.body)
 
-        self.class.base_uri "#{app_url.sub(/\/$/, '')}/rest-1.v1/Data/"
+        total_assets_found = xml.xpath('//Assets').first()['total'].to_i
+        return false if total_assets_found == 0
 
-        path = "/#{asset.to_s.capitalize}?where=#{attribute_name}='#{attribute_value}'"
-        self.class.get(path, {basic_auth: {username: login, password: password}})
+        attributes = {}
+        oid = ''
 
+        xml.xpath('//Assets/Asset').each do |found_asset|
+          oid = found_asset['id']
+          found_asset.xpath('Attribute').each do |attribute|
+            attribute_key = ruby_friendly_name(attribute['name']).to_sym
+            attributes[attribute_key] = attribute.content
+          end
+        end
+
+        Asset.new(asset, oid, attributes, {})
+      end
+
+      private
+
+      def build_query_for(asset, query)
+        path = "/#{meta_friendly_name(asset)}"
+        path += '?where=' if query
+        query.each {|key,value| path += "#{key}='#{value}'"}
+        path
       end
 
     end
