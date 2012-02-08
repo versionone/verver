@@ -9,7 +9,7 @@ describe Verver::Loader::API2 do
     subject.send(:build_query_for, :chicken, {'Name' => 'Foghorn'}).should == "/Chicken?where=Name='Foghorn'"
   end
 
-  context "looking up the default 'administrator' member" do
+  context "when looking up the default 'administrator' member" do
 
     before(:all) do
       VCR.use_cassette('member-found', :match_requests_on => [:uri, :body, :headers] ) do
@@ -17,12 +17,13 @@ describe Verver::Loader::API2 do
       end
     end
 
-    it "yields a Verver::Loader::Asset" do
+    it "return a Verver::Loader::Asset" do
       @member.should be_an_instance_of(Verver::Loader::Asset)
     end
 
     it "the Asset should contain the attributes and values of administrator" do
-      @member.name.should == "Administrator"
+      @member.asset_type.should == 'Member'
+      @member.name.should == 'Administrator'
       @member.oid.should == "Member:20"
       @member.username.should == "admin"
     end

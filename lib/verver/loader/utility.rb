@@ -1,11 +1,16 @@
-module Verver::Loader::Utility
+module Verver
+  module Loader
+    module Utility
 
-  def meta_friendly_name(name)
-    name.to_s.split('_').map(&:capitalize).join
+      def meta_friendly_name(name)
+        name.to_s.split('_').map(&:capitalize).join
+      end
+
+      def ruby_friendly_name(name)
+        return name if /^[a-z_]*$/ =~ name
+        name.to_s.gsub(/[A-Z]/) {|s| '_' + s.to_s.downcase}.gsub(/\./,'').sub('_','')
+      end
+    end
   end
-
-  def ruby_friendly_name(name)
-    name.to_s.gsub(/[A-Z]/) {|s| '_' + s.to_s.downcase}.gsub(/\./,'').sub('_','')
-  end
-
 end
+

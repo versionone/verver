@@ -1,0 +1,34 @@
+require 'verver/loader/model'
+
+describe Verver::Loader::Asset do
+
+  subject do
+    attributes = {rank: 'General', full_name: 'Robert E. Lee', favorite_ice_cream: 'chocolate'}
+    Verver::Loader::Asset.new('Member:42:99', attributes)
+  end
+
+  it "removes the moment from the oid" do
+    subject.oid.should == "Member:42"
+  end
+
+  it "provides reader methods for attributes" do
+    subject.rank.should == 'General'
+    subject.full_name.should == 'Robert E. Lee'
+    subject.favorite_ice_cream.should == 'chocolate'
+  end
+
+  describe "using an attribute hash with non-symbolic keys with mixed case" do
+
+    subject do
+      attributes = { 'one' => 1, "TwoThreeFour" => 234}
+      Verver::Loader::Asset.new('Member:42:99', attributes)
+    end
+
+    it "will normalize the method names within ruby idiom" do
+      subject.respond_to?(:one).should be_true
+      subject.respond_to?(:two_three_four).should be_true
+    end
+
+  end
+
+end

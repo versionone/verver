@@ -1,18 +1,24 @@
+require('verver/loader/utility')
+
 module Verver
   module Loader
 
     class Asset
 
-      attr_reader :name, :oid
+      attr_reader :oid
+      include Utility
 
-      def initialize(name, oid, attributes={}, relations={})
-        @name = name
+      def initialize(oid, attributes={}, relations={})
+
         @oid = remove_moment_from(oid)
+
         attributes.each do |key, value|
-          define_singleton_method key.to_sym do
+          normalized_key = ruby_friendly_name(key)
+          define_singleton_method normalized_key.to_sym do
             return value
           end
         end
+
         @relations = relations
       end
 

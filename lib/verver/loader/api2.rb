@@ -39,7 +39,7 @@ module Verver
           end
         end
 
-        Asset.new(asset, oid, attributes, {})
+        Asset.new(oid, attributes, {})
       end
 
       private
