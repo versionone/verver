@@ -1,4 +1,4 @@
-require 'verver/loader/model'
+require 'verver/loader/asset'
 
 describe Verver::Loader::Asset do
 

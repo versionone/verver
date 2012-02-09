@@ -2,7 +2,7 @@ require 'httparty'
 require 'nokogiri'
 require 'verver/loader/config'
 require 'verver/loader/utility'
-require 'verver/loader/model'
+require 'verver/loader/asset'
 
 module Verver
   module Loader

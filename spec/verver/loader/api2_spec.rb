@@ -1,5 +1,5 @@
 require 'verver/loader/api2'
-require 'verver/loader/model'
+require 'verver/loader/asset'
 
 describe Verver::Loader::API2 do
 
