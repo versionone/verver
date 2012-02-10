@@ -1,5 +1,52 @@
 require 'verver/loader'
 
+describe "Finding or creating assets" do
+
+  context "when the asset exists" do
+
+    let(:asset) { Verver::Loader::Asset.new("Member:20") }
+
+    subject do
+      api_double = double("api")
+
+      Verver::Loader::API2.stub(:new).and_return(api_double)
+
+      api_double.stub(:lookup).and_return(asset)
+
+      find_or_create_2 :member do |f|
+        f.lookup :name, 'Bob'
+      end
+    end
+
+    it "return an asset" do
+      subject.should eql(asset)
+    end
+
+  end
+
+  context "when the asset doesn't exist" do
+
+    let(:api_double) { double("api") }
+
+    before do
+      Verver::Loader::API2.stub(:new).and_return(api_double)
+      api_double.stub(:lookup).and_return(false)
+    end
+
+    it "attempt to make one" do
+
+      api_double.should_receive(:create)
+
+      find_or_create_2 :member do |f|
+        f.lookup :name, 'Bob'
+      end
+
+    end
+
+  end
+
+end
+
 describe Verver::Loader::FindOrCreateOperation do
 
   context "when rendered" do

@@ -5,6 +5,18 @@ def find_or_create(asset_name, &block)
   api.lookup(order[:asset], op.attribute_name, op.attribute_value, order[:data])
 end
 
+def find_or_create_2(asset_name, &block)
+  op = Verver::Loader::FindOrCreateOperation.new(asset_name, &block)
+  order = op.render
+  api = Verver::Loader::API2.new()
+  result = api.lookup(order[:asset], op.attribute_name, op.attribute_value)
+  if result
+    return result
+  else
+    return api.create()
+  end
+end
+
 module Verver
   module Loader
 
