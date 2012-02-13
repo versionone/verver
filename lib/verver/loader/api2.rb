@@ -51,6 +51,9 @@ module Verver
         path
       end
 
+      def build_post_for(asset)
+        "/#{meta_friendly_name(asset)}"
+      end
     end
 
   end
