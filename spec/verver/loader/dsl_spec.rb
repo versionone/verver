@@ -3,7 +3,6 @@ require 'verver/loader'
 describe "Finding or creating assets" do
 
   context "when the asset exists" do
-
     let(:asset) { Verver::Loader::Asset.new("Member:20") }
 
     subject do
@@ -21,11 +20,9 @@ describe "Finding or creating assets" do
     it "return an asset" do
       subject.should eql(asset)
     end
-
   end
 
   context "when the asset doesn't exist" do
-
     let(:api_double) { double("api") }
 
     before do
@@ -42,7 +39,6 @@ describe "Finding or creating assets" do
       end
 
     end
-
   end
 
 end
@@ -152,7 +148,6 @@ describe Verver::Loader::FindOrCreateOperation do
       end
 
     end
-
   end
 
   context "mvrs" do
