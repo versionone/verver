@@ -23,22 +23,22 @@ describe "Finding or creating assets" do
   end
 
   context "when the asset doesn't exist" do
+
     let(:api_double) { double("api") }
 
     before do
       Verver::Loader::API2.stub(:new).and_return(api_double)
       api_double.stub(:lookup).and_return(false)
-    end
-
-    it "attempt to make one" do
-
-      api_double.should_receive(:create)
-
-      find_or_create_2 :member do |f|
+      api_double.stub(:create).and_return(Verver::Loader::Asset.new("Member:20:4040"))
+      @result = find_or_create_2 :member do |f|
         f.lookup :name, 'Bob'
       end
-
     end
+
+    it "attempt to create one" do
+      @result.should be_an_instance_of(Verver::Loader::Asset)
+    end
+
   end
 
 end
