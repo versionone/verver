@@ -1,5 +1,12 @@
 require 'vcr'
 
+if ENV["COVERAGE"]
+  require 'simplecov'
+  SimpleCov.start do
+    add_filter "/spec/"
+  end
+end
+
 def transient_file(path)
   tranny = File.open(path, 'w') do |f|
     yield

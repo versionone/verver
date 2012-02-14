@@ -23,6 +23,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency 'win32console' if RUBY_PLATFORM =~ /mswin32/ || RUBY_PLATFORM =~ /mingw32/
 
   gem.add_development_dependency "rspec", "~> 2.8.0"
+  gem.add_development_dependency "simplecov", "~> 0.5.3"
   gem.add_development_dependency "rspec-spies", "~> 2.1.0"
   gem.add_development_dependency "ci_reporter", "~> 1.6.9"
   gem.add_development_dependency "vcr", "~> 2.0.0.rc1"
