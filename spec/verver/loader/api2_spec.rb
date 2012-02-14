@@ -6,14 +6,19 @@ describe Verver::Loader::API2 do
   subject { Verver::Loader::API2.new }
 
   it "can build a path to query meta for an asset by one of its attribute values" do
-    subject.send(:build_query_for, :chicken, {'Name' => 'Foghorn'}).should == "/Chicken?where=Name='Foghorn'"
+    subject.send(:search_path, :chicken, {'Name' => 'Foghorn'}).should == "/Chicken?where=Name='Foghorn'"
   end
 
   it "can build a path to post a new asset" do
-    subject.send(:build_post_for, :member).should == '/Member'
+    subject.send(:create_path, :member).should == '/Member'
+  end
+
+  it "can build a path to retrieve an asset by oid" do
+    subject.send(:item_path, :member, 'Member:20').should == '/Member/20'
   end
 
   context "when looking up the default 'administrator' member" do
+
     before(:all) do
       VCR.use_cassette('member-found', :match_requests_on => [:uri, :body, :headers] ) do
         @member = subject.lookup(:member, 'Name', 'Administrator')
@@ -30,9 +35,11 @@ describe Verver::Loader::API2 do
       @member.oid.should == "Member:20"
       @member.username.should == "admin"
     end
+
   end
 
   context "when looking up up a member that doesn't exist'" do
+
     before(:all) do
       VCR.use_cassette('member-not-found', :match_requests_on => [:uri, :body, :headers] ) do
         @member = subject.lookup(:member, 'Name', 'LeeroyJenkins')
@@ -42,15 +49,19 @@ describe Verver::Loader::API2 do
     it "should be false" do
       @member.should be_false
     end
+
   end
 
   context "when creating a member" do
-    it "posts to the webserver" do
-      pending('tbd')
-      # operation = FindOrCreateOperation.new(:member) do |f|
-      #   f.attributes(
-      # end
+
+    it "posts to the webserver"
+
+    context "after successfully creating a member" do
+
+      it "will retrieve the member, returning an asset"
+
     end
+
   end
 
 end
