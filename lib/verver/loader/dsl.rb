@@ -80,11 +80,7 @@ module Verver
         collection.each do |key, value|
           relation = {'name' => key, 'act' => 'set', 'Asset' => [] }
           value.each do |item|
-            #if item.respond_to? :oid
-            #  relation['Asset'] << {'idref' => item.oid}
-            #else
-              relation['Asset'] << {'idref' => item.to_s}
-            #end
+            relation['Asset'] << {'idref' => item.to_s}
           end
           payload << relation
         end
@@ -94,11 +90,7 @@ module Verver
         collection.each do |key, value|
           mvr = {'name' => key, 'Asset' => [] }
           value.each do |item|
-            if item.respond_to? :oid
-              mvr['Asset'] << {'idref' => item.oid, 'act' => 'add'}
-            else
-              mvr['Asset'] << {'idref' => item.to_s, 'act' => 'add'}
-            end
+            mvr['Asset'] << {'idref' => item.to_s, 'act' => 'add'}
           end
           payload << mvr
         end

@@ -150,11 +150,12 @@ describe Verver::Loader::FindOrCreateOperation do
     end
   end
 
-  context "mvrs" do
-    context "of one asset" do
+  context "when defining multi-value relationships (mvrs)" do
+
+    context "with a single asset" do
+
       subject do
-        asset1 = double("Asset")
-        asset1.stub(:oid) { 'Role:200' }
+        asset1 = Verver::Loader::Asset.new("Member:20")
 
         order = Verver::Loader::FindOrCreateOperation.new :an_asset do |op|
           op.mvrs do |m|
@@ -168,20 +169,29 @@ describe Verver::Loader::FindOrCreateOperation do
       its(['name']) {should include("Children")}
 
       it "should contain a single asset" do
-        subject['Asset'].should
-      end
-
-      it "the asset should have an oid 'Role:200'" do
-
+        subject['Asset'][0]["idref"].should == 'Member:20'
       end
 
       it "the asset should have the add action" do
-
+        subject['Asset'][0]["act"].should == 'add'
       end
 
     end
-    context "of multiple assets" do
+    context "with multiple assets" do
 
+      subject do
+        asset1 = Verver::Loader::Asset.new("Member:20")
+
+        order = Verver::Loader::FindOrCreateOperation.new :an_asset do |op|
+          op.mvrs do |m|
+            m.children asset1, 'Member:42', 'Member:99'
+          end
+        end
+
+        order.render[:data]['MVR'][0]
+      end
+
+      it "needs to be tested"
     end
   end
 
