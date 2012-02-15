@@ -1,6 +1,6 @@
 begin require 'win32console'
 rescue LoadError
-  puts "[WARN] RubyGem 'win32console' not installed. Are you on UNIX?"
+  puts "[WARN] RubyGem 'win32console' not installed. Are you on UNIX?" if ENV['WARN']
 end
 
 module Verver
