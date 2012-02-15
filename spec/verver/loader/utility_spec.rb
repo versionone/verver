@@ -8,11 +8,27 @@ describe Verver::Loader::Utility do
     end
   end
 
-  it "converts ruby style symbols to meta friendly names" do
-    subject.meta_friendly_name(:story_state).should == "StoryState"
+  context "#meta_friendly_name" do
+
+    it "converts :blah to Blah" do
+      subject.meta_friendly_name(:blah).should == 'Blah'
+    end
+
+    it "converts :blah_blah to BlahBlah" do
+      subject.meta_friendly_name(:blah_blah).should == 'BlahBlah'
+    end
+
+    it "converts BlahBlah to BlahBlah" do
+      subject.meta_friendly_name('BlahBlah').should == 'BlahBlah'
+    end
+
+    it "converts :Blah_BlahBLAHBLAHblah_blah_yourmom to BlahBlahBLAHBLAHblahBlahYourmom" do
+      subject.meta_friendly_name(:Blah_BlahBLAHBLAHblah_blah_yourmom).should == 'BlahBlahBLAHBLAHblahBlahYourmom'
+    end
+
   end
 
-  context "when converting to ruby-friendly names" do
+  context "#ruby_friendly_name" do
 
     it "converts meta style strings to ruby friendly names" do
       subject.ruby_friendly_name("StoryState").should == "story_state"

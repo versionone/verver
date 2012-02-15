@@ -37,8 +37,6 @@ describe "Full tilt loading!" do
 
     end
 
-    puts @member1
-
     @member2 = find_or_create :member do |f|
 
       f.lookup :name, 'test_member_5'

@@ -2,6 +2,10 @@ require('verver/loader/path_builder')
 
 describe Verver::Loader::PathBuilder do
 
+  it "should fail" do
+    subject.search_path(:epic_status, {'Name'=>'donedonedone'}).should == "/EpicStatus?where=Name='donedonedone'"
+  end
+
   it "can build a path to query meta for an asset by one of its attribute values" do
     subject.search_path(:chicken, {'Name' => 'Foghorn'}).should == "/Chicken?where=Name='Foghorn'"
   end
