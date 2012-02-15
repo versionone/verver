@@ -1,9 +1,9 @@
 def find_or_create(asset_name, &block)
-  op = Verver::Loader::FindOrCreateOperation.new(asset_name, &block)
-  order = op.render
+  operation = Verver::Loader::FindOrCreateOperation.new(asset_name, &block)
+  order = operation.render
   api = Verver::Loader::API2.new()
-  result = api.lookup(order[:asset], op.attribute_name, op.attribute_value)
-  return (if result then result else api.create() end)
+  result = api.lookup(order[:asset], operation.attribute_name, operation.attribute_value)
+  return (if result then result else api.create(operation) end)
 end
 
 module Verver

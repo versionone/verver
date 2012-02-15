@@ -24,6 +24,7 @@ describe "Full tilt loading!" do
       f.lookup :name, 'inky'
 
       f.attributes do |a|
+        a.name 'inky'
         a.username 'inky'
         a.nickname 'inky'
         a.password 'inky'
@@ -58,7 +59,11 @@ describe "Full tilt loading!" do
 
     @epic = find_or_create :epic do |f|
 
-      f.lookup :name, 'big work'
+      f.lookup :name, 'bigepic'
+
+      f.attributes do |a|
+        a.name 'bigepic'
+      end
 
       f.relations do |r|
         r.scope @scope
