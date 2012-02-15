@@ -131,8 +131,7 @@ describe Verver::Loader::FindOrCreateOperation do
 
       subject do
 
-        asset = double("Asset")
-        asset.stub(:oid) { 'Role:200' }
+        asset = Verver::Loader::Asset.new("Role:200")
 
         order = Verver::Loader::FindOrCreateOperation.new :an_asset do |op|
           op.relations do |r|
@@ -144,8 +143,8 @@ describe Verver::Loader::FindOrCreateOperation do
 
       end
 
-      it "should contain a single asset, 'Role:200'" do
-        subject['Asset'][0]["idref"].should eql('Role:200')
+      it "should contain the specified asset" do
+        subject['Asset'][0]["idref"].should == 'Role:200'
       end
 
     end

@@ -7,9 +7,18 @@ describe Verver::Loader::Asset do
     Verver::Loader::Asset.new('Member:42:99', attributes)
   end
 
-  it "removes the moment from the oid" do
-    subject.oid.should == "Member:42"
+  describe '#oid' do
+    it "removes the moment from the oid" do
+      subject.oid.should == "Member:42"
+    end
   end
+
+  describe '#to_s' do
+    it "returns the oid of the asset" do
+      subject.to_s.should == subject.oid
+    end
+  end
+
 
   it "provides reader methods for attributes" do
     subject.rank.should == 'General'
