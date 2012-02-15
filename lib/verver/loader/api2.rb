@@ -34,7 +34,6 @@ module Verver
         xml = format_post(operation.render()[:data])
         path = Verver::Loader::PathBuilder.create_path(asset)
         response = self.class.post(path, {basic_auth: {username: login, password: password}, body: xml})
-        puts response.body
         xml = Nokogiri::XML::Document.parse(response.body)
         build_asset_from_create(xml)
       end

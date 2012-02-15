@@ -59,10 +59,10 @@ describe "Full tilt loading!" do
 
     @epic = find_or_create :epic do |f|
 
-      f.lookup :name, 'bigepic'
+      f.lookup :name, 'big old epic'
 
       f.attributes do |a|
-        a.name 'bigepic'
+        a.name 'big old epic'
       end
 
       f.relations do |r|

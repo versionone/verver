@@ -1,3 +1,4 @@
+require('uri')
 require('verver/loader/utility')
 
 module Verver
@@ -11,7 +12,7 @@ module Verver
         path = "/#{meta_friendly_name(asset)}"
         path += '?where=' if query
         query.each {|key,value| path += "#{key}='#{value}'"}
-        path
+        URI.escape(path)
       end
 
       def self.create_path(asset)
