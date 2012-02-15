@@ -23,11 +23,22 @@ module Verver
       def lookup(asset, attribute_name, attribute_value)
         path = Verver::Loader::PathBuilder.search_path(asset, {attribute_name => attribute_value})
         response = self.class.get(path, {basic_auth: {username: login, password: password}})
+
         xml = Nokogiri::XML::Document.parse(response.body)
 
-        total_assets_found = xml.xpath('//Assets').first()['total'].to_i
-        return false if total_assets_found == 0
+        return false if total_assets_found(xml) == 0
+        build_asset_from_lookup(xml)
+      end
 
+      def create; end
+
+      private
+
+      def total_assets_found(xml)
+        xml.xpath('//Assets').first()['total'].to_i
+      end
+
+      def build_asset_from_lookup(xml)
         attributes = {}
         oid = ''
 
@@ -41,8 +52,6 @@ module Verver
 
         Asset.new(oid, attributes, {})
       end
-
-      def create; end
 
     end
 
