@@ -12,7 +12,7 @@ describe "Finding or creating assets" do
 
       api_double.stub(:lookup).and_return(asset)
 
-      find_or_create_2 :member do |f|
+      find_or_create :member do |f|
         f.lookup :name, 'Bob'
       end
     end
@@ -31,7 +31,7 @@ describe "Finding or creating assets" do
       api_double.stub(:lookup).and_return(false)
       api_double.stub(:create).and_return(Verver::Loader::Asset.new("Member:20:4040"))
 
-      @result = find_or_create_2 :member do |f|
+      @result = find_or_create :member do |f|
         f.lookup :name, 'Bob'
       end
     end

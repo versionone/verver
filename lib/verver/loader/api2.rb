@@ -21,7 +21,7 @@ module Verver
       end
 
       def lookup(asset, attribute_name, attribute_value)
-        path = search_path(asset, {attribute_name => attribute_value})
+        path = Verver::Loader::PathBuilder.search_path(asset, {attribute_name => attribute_value})
         response = self.class.get(path, {basic_auth: {username: login, password: password}})
         xml = Nokogiri::XML::Document.parse(response.body)
 
@@ -44,22 +44,6 @@ module Verver
 
       def create; end
 
-      private
-
-      def search_path(asset, query)
-        path = "/#{meta_friendly_name(asset)}"
-        path += '?where=' if query
-        query.each {|key,value| path += "#{key}='#{value}'"}
-        path
-      end
-
-      def create_path(asset)
-        "/#{meta_friendly_name(asset)}"
-      end
-
-      def item_path(asset, oid)
-        "/#{meta_friendly_name(asset)}/#{oid.split(':')[1]}"
-      end
     end
 
   end
