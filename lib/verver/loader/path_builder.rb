@@ -18,10 +18,6 @@ module Verver
         "/#{meta_friendly_name(asset)}"
       end
 
-      def self.item_path(asset, oid)
-        "/#{meta_friendly_name(asset)}/#{oid.split(':')[1]}"
-      end
-
     end
 
   end

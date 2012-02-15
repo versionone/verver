@@ -1,5 +1,5 @@
 require 'verver/loader/api2'
-require 'verver/loader/asset'
+require 'verver/loader/dsl'
 
 describe Verver::Loader::API2 do
 
@@ -42,12 +42,30 @@ describe Verver::Loader::API2 do
 
   context "when creating a member" do
 
-    it "posts to the webserver"
+    before(:all) do
 
-    context "after successfully creating a member" do
+      api = Verver::Loader::API2.new
 
-      it "will retrieve the member, returning an asset"
+      operation = Verver::Loader::FindOrCreateOperation.new(:member) do |o|
+        o.attributes do |a|
+          a.name 'bobname'
+          a.username 'bobuid'
+          a.nickname 'bobnick'
+          a.password 'bobpwd'
+        end
+        o.relations do |r|
+          r.default_role 'Role:1'
+        end
+      end
 
+      VCR.use_cassette('create-member', :match_requests_on => [:uri, :body, :headers]) do
+        @created_asset = subject.create(operation)
+      end
+
+    end
+
+    it "maps the member to an asset" do
+      @created_asset.should be_an_instance_of(Verver::Loader::Asset)
     end
 
   end

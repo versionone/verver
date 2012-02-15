@@ -1,13 +1,10 @@
 require 'verver/loader'
 
-
 describe "Full tilt loading!" do
 
   it "works like a charm" do
 
-    pending("waiting on access to local instance to try this out")
-
-    @scope = find_or_create_2 :scope do |f|
+    @scope = find_or_create :scope do |f|
 
       f.lookup :name, 'test_scope_4'
 
@@ -22,7 +19,7 @@ describe "Full tilt loading!" do
 
     end
 
-    @member1 = find_or_create_2 :member do |f|
+    @member1 = find_or_create :member do |f|
 
       f.lookup :name, 'inky'
 
@@ -41,7 +38,7 @@ describe "Full tilt loading!" do
 
     puts @member1
 
-    @member2 = find_or_create_2 :member do |f|
+    @member2 = find_or_create :member do |f|
 
       f.lookup :name, 'test_member_5'
 
@@ -59,7 +56,7 @@ describe "Full tilt loading!" do
 
     end
 
-    @epic = find_or_create_2 :epic do |f|
+    @epic = find_or_create :epic do |f|
 
       f.lookup :name, 'big work'
 

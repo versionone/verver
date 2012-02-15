@@ -13,7 +13,7 @@ module Verver
 
       include Verver::Loader::Utility
 
-      attr_reader :attribute_name, :attribute_value
+      attr_reader :asset, :attribute_name, :attribute_value
 
       def initialize(asset_name)
         @asset = meta_friendly_name(asset_name.to_s)

@@ -34,34 +34,9 @@ module Verver
 
       end
 
-      def format_post(order)
-        builder = Nokogiri::XML::Builder.new do |xml|
-          xml.Asset {
-            order["Attribute"].each do |attr|
-              xml.Attribute(:name => attr["name"], :act => 'set') {
-                xml.text(attr["content"])
-              }
-            end
-            order["Relation"].each do |attr|
-              xml.Relation(:name => attr["name"], :act => attr["act"]) {
-                attr["Asset"].each do |asset|
-                  xml.Asset(:idref=> asset["idref"])
-                end
-              }
-            end
-            order["MVR"].each do |attr|
-              xml.Relation(:name => attr["name"]) {
-                attr["Asset"].each do |asset|
-                  xml.Asset(:idref=> asset["idref"], :act=>asset["act"])
-                end
-              }
-            end
-          }
-        end
-        builder.to_xml
-      end
 
-      def build_asset_from_lookup(asset, xml)
+
+      def build_asset_from_lookup(asset_type, xml)
         oid = ''
         attributes = {}
         relations = {}
@@ -74,8 +49,10 @@ module Verver
           end
         end
 
-        Asset.new(asset, oid, attributes, relations)
+        Asset.new(asset_type, oid, attributes, relations)
       end
+
+
 
       def need_to_create?(xml)
         xml.xpath('//Assets').first()['total'].to_i == 0

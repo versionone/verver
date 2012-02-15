@@ -10,8 +10,4 @@ describe Verver::Loader::PathBuilder do
      subject.create_path(:member).should == '/Member'
    end
 
-   it "can build a path to retrieve an asset by oid" do
-     subject.item_path(:member, 'Member:20').should == '/Member/20'
-   end
-
 end

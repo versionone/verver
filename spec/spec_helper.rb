@@ -15,7 +15,10 @@ def transient_file(path)
   File.delete(tranny)
 end
 
+
+
 VCR.configure do |c|
+  c.allow_http_connections_when_no_cassette = true
   c.cassette_library_dir = 'spec/fixtures/vcr'
   c.hook_into :webmock
 end
