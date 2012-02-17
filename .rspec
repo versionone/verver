@@ -2,3 +2,4 @@
 -r rspec-spies
 --require spec_helper
 --no-color
+--tag ~skip

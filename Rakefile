@@ -8,7 +8,8 @@ task :default => :spec
 
 desc "Run specs."
 RSpec::Core::RakeTask.new do |t|
-  t.rspec_opts = 'spec/spec_helper.rb' #hack because jenkins doesn't seem to read .rspec?!
+  # hack because jenkins doesn't seem to read .rspec?!
+  t.rspec_opts = "spec/spec_helper.rb --tag '~@skip'"
 end
 
 namespace :ci do
