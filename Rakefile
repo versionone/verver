@@ -14,7 +14,7 @@ end
 
 namespace :ci do
 
-  desc "setup rspect for JUnit output & run specs"
+  desc "setup rspec for JUnit output & run specs"
   task :spec => ['ci:pre_spec', 'ci:setup:rspec', 'rake:spec']
 
   task :pre_spec do

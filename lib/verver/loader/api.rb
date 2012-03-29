@@ -88,15 +88,18 @@ module Verver
       end
 
       def build_asset_from_create(xml)
+
+        # check for errors
+        if (xml.xpath('//Error//Message').count > 0)
+          error_message = xml.xpath('//Error//Message').text()
+          raise Verver::Loader::CreationException.new(error_message)
+        end
+
         oid = ''
         attributes = {}
         relations = {}
 
         assetNode = xml.css('Asset').first()
-
-        unless assetNode then
-          raise Verver::Loader::CreationException.new("could not create asset")
-        end
 
         oid = assetNode["id"]
 
