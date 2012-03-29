@@ -1,9 +1,9 @@
-require 'verver/loader/api2'
+require 'verver/loader/api'
 require 'verver/loader/dsl'
 
-describe Verver::Loader::API2 do
+describe Verver::Loader::API do
 
-  subject { Verver::Loader::API2.new }
+  subject { Verver::Loader::API.new }
 
   context "when looking up the default 'administrator' member" do
 
@@ -44,7 +44,7 @@ describe Verver::Loader::API2 do
 
     before(:all) do
 
-      api = Verver::Loader::API2.new
+      api = Verver::Loader::API.new
 
       operation = Verver::Loader::FindOrCreateOperation.new(:member) do |o|
         o.attributes do |a|

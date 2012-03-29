@@ -10,7 +10,7 @@ module Verver
 
     # retrieves and creates assets from the versionone rest api
     # maps assets into ruby objects {Verver::Loader::Asset}
-    class API2
+    class API
 
       include HTTParty
       include Config

@@ -8,7 +8,7 @@ describe "Finding or creating assets" do
     subject do
       api_double = double("api")
 
-      Verver::Loader::API2.stub(:new).and_return(api_double)
+      Verver::Loader::API.stub(:new).and_return(api_double)
 
       api_double.stub(:lookup).and_return(asset)
 
@@ -27,7 +27,7 @@ describe "Finding or creating assets" do
     let(:api_double) { double("api") }
 
     before do
-      Verver::Loader::API2.stub(:new).and_return(api_double)
+      Verver::Loader::API.stub(:new).and_return(api_double)
       api_double.stub(:lookup).and_return(false)
       api_double.stub(:create).and_return(Verver::Loader::Asset.new("Member:20:4040"))
 
