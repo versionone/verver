@@ -4,6 +4,7 @@ require 'verver/loader/config'
 require 'verver/loader/utility'
 require 'verver/loader/asset'
 require 'verver/loader/path_builder'
+require 'verver/loader/creation_exception'
 
 module Verver
   module Loader
@@ -92,6 +93,10 @@ module Verver
         relations = {}
 
         assetNode = xml.css('Asset').first()
+
+        unless assetNode then
+          raise Verver::Loader::CreationException.new("could not create asset")
+        end
 
         oid = assetNode["id"]
 
