@@ -2,7 +2,7 @@ module Verver
 
   class IIS
 
-    def initialize(shell_proc)
+    def initialize(shell_proc = Kernel.method(:system))
       @shell_proc = shell_proc
     end
 
