@@ -40,4 +40,12 @@ describe Verver::Loader::Asset do
 
   end
 
+  describe "retrieving dotted attributes" do
+    subject {Verver::Loader::Asset.new('Epic:42',{'scope.name' => 'System Project'}) }
+
+    it "can be found through an indexer" do
+      subject.fetch('scope.name').should == 'System Project'
+    end
+  end
+
 end

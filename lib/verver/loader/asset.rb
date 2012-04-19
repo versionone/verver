@@ -10,6 +10,8 @@ module Verver
 
       def initialize(oid, attributes={}, relations={})
 
+        @attributes = attributes
+
         @oid = remove_moment_from(oid)
 
         attributes.each do |key, value|
@@ -20,6 +22,10 @@ module Verver
         end
 
         @relations = relations
+      end
+
+      def fetch(key)
+        @attributes[key]
       end
 
       def remove_moment_from(oid)
