@@ -1,3 +1,5 @@
+
+
 def find_or_create(asset_name, &block)
   operation = Verver::Loader::FindOrCreateOperation.new(asset_name, &block)
   order = operation.render
@@ -5,6 +7,10 @@ def find_or_create(asset_name, &block)
   result = api.lookup(order[:asset], operation.attribute_name, operation.attribute_value)
   return (if result then result else api.create(operation) end)
 end
+
+
+
+
 
 module Verver
 
@@ -48,12 +54,13 @@ module Verver
                       content: if key == @lookup_attr then @lookup_value else value end,
                       act: 'set'
                       }
-                  end
+                end,
+
                 Relation: @relations.map do |key, value|
                     return {
                       name: key,
                       Asset: value.map {|item| {idref: item.to_s}},
-                      act: 'set',
+                      act: 'set'
                       }
                   end,
                 MVR: @mvrs.map do |key, value|
@@ -70,6 +77,7 @@ module Verver
                 }
             }
       end
+    end
 
 
     class FindOrCreateOperation
