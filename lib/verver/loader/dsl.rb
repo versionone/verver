@@ -24,7 +24,7 @@ module Verver
           if result then
             return result
           else
-            return api.create operation
+            return api.create op
           end
         end
     end
