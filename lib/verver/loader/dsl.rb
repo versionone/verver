@@ -1,5 +1,4 @@
 
-
 def find_or_create(asset_name, &block)
   operation = Verver::Loader::FindOrCreateOperation.new(asset_name, &block)
   order = operation.render
@@ -37,6 +36,7 @@ module Verver
         @attributes = (data_hash[:attributes] or {})
         @mvrs = (data_hash[:mvrs] or {})
         @relations = (data_hash[:relations] or {})
+        @attributes[@lookup_attr] = @lookup_value
         yield self
       end
 
@@ -51,7 +51,7 @@ module Verver
                 Attribute: @attributes.map do |key, value|
                     return {
                       name: key,
-                      content: if key == @lookup_attr then @lookup_value else value end,
+                      content: value,
                       act: 'set'
                       }
                 end,
@@ -59,7 +59,7 @@ module Verver
                 Relation: @relations.map do |key, value|
                     return {
                       name: key,
-                      Asset: value.map {|item| {idref: item.to_s}},
+                      Asset: value.map { |item| {idref: item.to_s} },
                       act: 'set'
                       }
                   end,
