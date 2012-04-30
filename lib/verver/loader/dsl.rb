@@ -20,7 +20,7 @@ module Verver
         def execute
           op = render()
           api = Verver::Loader::API.new()
-          result = api.lookup operation_data[:asset], operation.lookup_attr, operation.lookup_value
+          result = api.lookup op[:asset], op.lookup_attr, op.lookup_value
           if result then
             return result
           else
