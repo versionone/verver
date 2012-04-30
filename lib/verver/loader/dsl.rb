@@ -7,7 +7,70 @@ def find_or_create(asset_name, &block)
 end
 
 module Verver
+
   module Loader
+
+    class ExecutableOperation
+        def execute
+          op = render()
+          api = Verver::Loader::API.new()
+          result = api.lookup operation_data[:asset], operation.lookup_attr, operation.lookup_value
+          if result then
+            return result
+          else
+            return api.create operation
+          end
+        end
+    end
+
+    class FindOrCreate < ExecutableOperation
+      def initialize(asset_type, lookup_hash, data_hash)
+        @asset_type = meta_friendly_name asset_type
+        @lookup_attr = meta_friendly_name lookup_hash.keys.first
+        @lookup_value = lookup_hash[@lookup_attr]
+        @attributes = (data_hash[:attributes] or {})
+        @mvrs = (data_hash[:mvrs] or {})
+        @relations = (data_hash[:relations] or {})
+        yield self
+      end
+
+      def render
+        return {
+            asset: @asset,
+            find: {
+                attribute: @lookup_attr,
+                value: @lookup_value
+                },
+            data: {
+                Attribute: @attributes.map do |key, value|
+                    return {
+                      name: key,
+                      content: if key == @lookup_attr then @lookup_value else value end,
+                      act: 'set'
+                      }
+                  end
+                Relation: @relations.map do |key, value|
+                    return {
+                      name: key,
+                      Asset: value.map {|item| {idref: item.to_s}},
+                      act: 'set',
+                      }
+                  end,
+                MVR: @mvrs.map do |key, value|
+                    return {
+                      name: key,
+                      Asset: value.map do |item|
+                        return {
+                          idref: item.to_s,
+                          act: 'add'
+                          }
+                      end
+                      }
+                  end
+                }
+            }
+      end
+
 
     class FindOrCreateOperation
 
