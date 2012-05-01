@@ -34,7 +34,9 @@ module Verver
                     }},
                 Relation: relations.map { |key, value| {
                     name: key,
-                    Asset: value.map { |item| {idref: item.to_s} },
+                    Asset: value.map { |item| {
+                      idref: item.to_s
+                      }},
                     act: 'set'
                     }},
                 MVR: mvrs.map { |key, value| {
