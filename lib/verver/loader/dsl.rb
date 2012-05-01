@@ -7,24 +7,21 @@ def find_or_create(asset_name, &block)
 end
 
 
-
-
-
 module Verver
 
   module Loader
 
-    def self.find_or_create(asset_type, lookup_hash, data_hash)
+    def self.find_or_create(asset_type, lookup_hash, data_hash={})
         asset_type = Verver::Loader::Utility.meta_friendly_name asset_type
         lookup_key = lookup_hash.keys.first
         lookup_attr = Verver::Loader::Utility.meta_friendly_name lookup_key
         lookup_value = lookup_hash[lookup_key]
-        attributes = data_hash[:attributes] or {}
+        attributes = data_hash[:attributes] || {}
         attributes[lookup_attr] = lookup_value
-        mvrs = data_hash[:mvrs] or {}
-        relations = data_hash[:relations] or {}
+        mvrs = data_hash[:mvrs] || {}
+        relations = data_hash[:relations] || {}
         api = Verver::Loader::API.new()
-        return (api.lookup asset_type, lookup_attr, lookup_value) or (api.create {
+        return (api.lookup asset_type, lookup_attr, lookup_value) || (api.create({
             asset: asset_type,
             data: {
                 Attribute: attributes.map { |key, value| {
@@ -34,10 +31,10 @@ module Verver
                     }},
                 Relation: relations.map { |key, value| {
                     name: key,
+                    act: 'set',
                     Asset: value.map { |item| {
                       idref: item.to_s
-                      }},
-                    act: 'set'
+                      }}
                     }},
                 MVR: mvrs.map { |key, value| {
                     name: key,
