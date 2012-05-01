@@ -1,4 +1,3 @@
-
 def find_or_create(asset_name, &block)
   operation = Verver::Loader::FindOrCreateOperation.new(asset_name, &block)
   order = operation.render
@@ -15,67 +14,38 @@ module Verver
 
   module Loader
 
-    class ExecutableOperation
-        def execute
-          op = render()
-          api = Verver::Loader::API.new()
-          result = api.lookup op[:asset], op.lookup_attr, op.lookup_value
-          if result then
-            return result
-          else
-            return api.create op
-          end
-        end
-    end
-
-    class FindOrCreate < ExecutableOperation
-      def initialize(asset_type, lookup_hash, data_hash)
-        @asset_type = meta_friendly_name asset_type
-        @lookup_attr = meta_friendly_name lookup_hash.keys.first
-        @lookup_value = lookup_hash[@lookup_attr]
-        @attributes = (data_hash[:attributes] or {})
-        @mvrs = (data_hash[:mvrs] or {})
-        @relations = (data_hash[:relations] or {})
-        @attributes[@lookup_attr] = @lookup_value
-        yield self
-      end
-
-      def render
-        return {
-            asset: @asset,
-            find: {
-                attribute: @lookup_attr,
-                value: @lookup_value
-                },
+    def self.find_or_create(asset_type, lookup_hash, data_hash)
+        asset_type = Verver::Loader::Utility.meta_friendly_name asset_type
+        lookup_key = lookup_hash.keys.first
+        lookup_attr = Verver::Loader::Utility.meta_friendly_name lookup_key
+        lookup_value = lookup_hash[lookup_key]
+        attributes = data_hash[:attributes] or {}
+        attributes[lookup_attr] = lookup_value
+        mvrs = data_hash[:mvrs] or {}
+        relations = data_hash[:relations] or {}
+        api = Verver::Loader::API.new()
+        return (api.lookup asset_type, lookup_attr, lookup_value) or (api.create {
+            asset: asset_type,
             data: {
-                Attribute: @attributes.map do |key, value|
-                    return {
-                      name: key,
-                      content: value,
-                      act: 'set'
-                      }
-                end,
-
-                Relation: @relations.map do |key, value|
-                    return {
-                      name: key,
-                      Asset: value.map { |item| {idref: item.to_s} },
-                      act: 'set'
-                      }
-                  end,
-                MVR: @mvrs.map do |key, value|
-                    return {
-                      name: key,
-                      Asset: value.map do |item|
-                        return {
-                          idref: item.to_s,
-                          act: 'add'
-                          }
-                      end
-                      }
-                  end
+                Attribute: attributes.map { |key, value| {
+                    name: key,
+                    content: value,
+                    act: 'set'
+                    }},
+                Relation: relations.map { |key, value| {
+                    name: key,
+                    Asset: value.map { |item| {idref: item.to_s} },
+                    act: 'set'
+                    }},
+                MVR: mvrs.map { |key, value| {
+                    name: key,
+                    Asset: value.map { |item| {
+                        idref: item.to_s,
+                        act: 'add'
+                        }}
+                    }}
                 }
-            }
+            })
       end
     end
 
