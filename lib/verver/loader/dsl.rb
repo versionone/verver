@@ -6,15 +6,18 @@ def find_or_create(asset_name, &block)
   return (if result then result else api.create(operation) end)
 end
 
-
 module Verver
 
   module Loader
+    class MustHaveAClassToCallAFunction
+      include Verver::Loader::Utility
+    end
 
     def self.find_or_create(asset_type, lookup_hash, data_hash={})
-        asset_type = Verver::Loader::Utility.meta_friendly_name asset_type
+        utils = MustHaveAClassToCallAFunction.new
+        asset_type = utils.meta_friendly_name asset_type
         lookup_key = lookup_hash.keys.first
-        lookup_attr = Verver::Loader::Utility.meta_friendly_name lookup_key
+        lookup_attr = utils.meta_friendly_name lookup_key
         lookup_value = lookup_hash[lookup_key]
         attributes = data_hash[:attributes] || {}
         attributes[lookup_attr] = lookup_value
@@ -46,6 +49,7 @@ module Verver
                 }
             }))
     end
+
 
 
     class FindOrCreateOperation
