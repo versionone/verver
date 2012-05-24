@@ -23,11 +23,15 @@ module Verver
       end
 
       def lookup(asset, attribute_name, attribute_value)
-        path = Verver::Loader::PathBuilder.search_path(asset, {attribute_name => attribute_value})
-        response = self.class.get(path, {basic_auth: {username: login, password: password}})
-        xml = Nokogiri::XML::Document.parse(response.body)
+        xml = get_xml(asset, attribute_name, attribute_value)
         return false if total_assets_found(xml) == 0
-        build_asset_from_lookup(xml)
+        build_asset_from_lookup(xml.xpath("//Assets/Asset").first)
+      end
+
+      def lookup_all(asset, attribute_name, attribute_value)
+        xml = get_xml(asset, attribute_name, attribute_value)
+        p xml
+        xml.xpath("//Assets/Asset").map { |a| build_asset_from_lookup(a) }
       end
 
       def create(operation)
@@ -41,21 +45,28 @@ module Verver
 
       private
 
+      def get_xml(asset, attribute_name, attribute_value)
+        path = Verver::Loader::PathBuilder.search_path(asset, {attribute_name => attribute_value})
+        response = self.class.get(path, {basic_auth: {username: login, password: password}})
+        Nokogiri::XML::Document.parse(response.body)
+      end
+
+
       def total_assets_found(xml)
         xml.xpath('//Assets').first()['total'].to_i
       end
 
-      def build_asset_from_lookup(xml)
+      def build_asset_from_lookup(found_asset)
         attributes = {}
-        oid = ''
+        #oid = ''
 
-        xml.xpath('//Assets/Asset').each do |found_asset|
+        #xml.xpath('//Assets/Asset').each do |found_asset|
           oid = found_asset['id']
           found_asset.xpath('Attribute').each do |attribute|
             attribute_key = ruby_friendly_name(attribute['name']).to_sym
             attributes[attribute_key] = attribute.content
           end
-        end
+        #end
 
         Asset.new(oid, attributes, {})
       end
