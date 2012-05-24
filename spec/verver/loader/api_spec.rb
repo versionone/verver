@@ -70,4 +70,21 @@ describe Verver::Loader::API do
 
   end
 
+  context "when looking up multiple members" do
+
+    before(:all) do
+      VCR.use_cassette('multiple-members-found', :match_requests_on => [:uri, :body, :headers] ) do
+        @members = subject.lookup_all(:member, 'Nickname', 'bob')
+      end
+    end
+
+    it "should return multiple results" do
+      @members.count.should == 3
+    end
+
+    it "should only contain assets" do
+      @members.each { |member| member.should be_an_instance_of(Verver::Loader::Asset) }
+    end
+
+  end
 end

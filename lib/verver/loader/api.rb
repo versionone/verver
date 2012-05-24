@@ -30,7 +30,6 @@ module Verver
 
       def lookup_all(asset, attribute_name, attribute_value)
         xml = get_xml(asset, attribute_name, attribute_value)
-        p xml
         xml.xpath("//Assets/Asset").map { |a| build_asset_from_lookup(a) }
       end
 
