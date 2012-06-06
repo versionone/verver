@@ -39,10 +39,21 @@ module Verver
         path = Verver::Loader::PathBuilder.create_path(asset)
         response = self.class.post(path, {basic_auth: {username: login, password: password}, body: xml})
         xml = Nokogiri::XML::Document.parse(response.body)
-        build_asset_from_create(xml)
+        oid = parse_oid_from(xml)
+        lookup(operation.asset, 'ID', oid)
       end
 
       private
+
+      def parse_oid_from(xml)
+
+        if (xml.xpath('//Error//Message').count > 0)
+          error_message = xml.xpath('//Error//Message').text()
+          raise Verver::Loader::CreationException.new(error_message)
+        end
+
+        xml.css('Asset').first()["id"]
+      end
 
       def get_xml(asset, attribute_name, attribute_value)
         path = Verver::Loader::PathBuilder.search_path(asset, {attribute_name => attribute_value})
@@ -60,11 +71,11 @@ module Verver
         #oid = ''
 
         #xml.xpath('//Assets/Asset').each do |found_asset|
-          oid = found_asset['id']
-          found_asset.xpath('Attribute').each do |attribute|
-            attribute_key = ruby_friendly_name(attribute['name']).to_sym
-            attributes[attribute_key] = attribute.content
-          end
+        oid = found_asset['id']
+        found_asset.xpath('Attribute').each do |attribute|
+          attribute_key = ruby_friendly_name(attribute['name']).to_sym
+          attributes[attribute_key] = attribute.content
+        end
         #end
 
         Asset.new(oid, attributes, {})
@@ -81,14 +92,14 @@ module Verver
             order["Relation"].each do |attr|
               xml.Relation(:name => attr["name"], :act => attr["act"]) {
                 attr["Asset"].each do |asset|
-                  xml.Asset(:idref=> asset["idref"])
+                  xml.Asset(:idref => asset["idref"])
                 end
               }
             end
             order["MVR"].each do |attr|
               xml.Relation(:name => attr["name"]) {
                 attr["Asset"].each do |asset|
-                  xml.Asset(:idref=> asset["idref"], :act=>asset["act"])
+                  xml.Asset(:idref => asset["idref"], :act => asset["act"])
                 end
               }
             end
@@ -97,29 +108,6 @@ module Verver
         builder.to_xml
       end
 
-      def build_asset_from_create(xml)
-
-        # check for errors
-        if (xml.xpath('//Error//Message').count > 0)
-          error_message = xml.xpath('//Error//Message').text()
-          raise Verver::Loader::CreationException.new(error_message)
-        end
-
-        oid = ''
-        attributes = {}
-        relations = {}
-
-        assetNode = xml.css('Asset').first()
-
-        oid = assetNode["id"]
-
-        assetNode.css('Attribute').each do |attributeNode|
-          attribute_key = ruby_friendly_name(attributeNode['name'])
-          attributes[attribute_key] = attributeNode.content
-        end
-
-        Asset.new(oid, attributes, relations)
-      end
 
     end
 

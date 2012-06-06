@@ -40,7 +40,7 @@ describe Verver::Loader::API do
 
   end
 
-  context "when creating a member" do
+  context "after creating a member" do
 
     before(:all) do
 
@@ -58,14 +58,16 @@ describe Verver::Loader::API do
         end
       end
 
+      subject.stub(:lookup) { Verver::Loader::Asset.new('Asset:42', {}, {}) }
+
       VCR.use_cassette('create-member', :match_requests_on => [:uri, :body, :headers]) do
         @created_asset = subject.create(operation)
       end
 
     end
 
-    it "maps the member to an asset" do
-      @created_asset.should be_an_instance_of(Verver::Loader::Asset)
+    it "looks up the newly created member" do
+      @created_asset.oid.should == 'Asset:42'
     end
 
   end
