@@ -76,7 +76,7 @@ describe Verver::Loader::API do
 
     before(:all) do
       VCR.use_cassette('multiple-members-found', :match_requests_on => [:uri, :body, :headers] ) do
-        @members = subject.lookup_all(:member, 'Nickname', 'bob')
+        @members = subject.lookup_all(:member, {'Nickname'=> 'bob'})
       end
     end
 
