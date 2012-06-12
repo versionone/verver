@@ -23,13 +23,13 @@ module Verver
       end
 
       def lookup(asset, attribute_name, attribute_value)
-        xml = get_xml(asset, attribute_name, attribute_value)
+        xml = get_xml(asset, {attribute_name=> attribute_value})
         return false if total_assets_found(xml) == 0
         build_asset_from_lookup(xml.xpath("//Assets/Asset").first)
       end
 
-      def lookup_all(asset, attribute_name, attribute_value)
-        xml = get_xml(asset, attribute_name, attribute_value)
+      def lookup_all(asset, query = nil)
+        xml = get_xml(asset, query)
         xml.xpath("//Assets/Asset").map { |a| build_asset_from_lookup(a) }
       end
 
@@ -55,8 +55,8 @@ module Verver
         xml.css('Asset').first()["id"]
       end
 
-      def get_xml(asset, attribute_name, attribute_value)
-        path = Verver::Loader::PathBuilder.search_path(asset, {attribute_name => attribute_value})
+      def get_xml(asset, query)
+        path = Verver::Loader::PathBuilder.search_path(asset, query)
         response = self.class.get(path, {basic_auth: {username: login, password: password}})
         Nokogiri::XML::Document.parse(response.body)
       end

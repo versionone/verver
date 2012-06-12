@@ -10,8 +10,12 @@ module Verver
 
       def self.search_path(asset, query)
         path = "/#{meta_friendly_name(asset)}"
-        path += '?where=' if query
-        query.each {|key,value| path += "#{key}='#{value}'"}
+        if query.is_a? String
+          path += '?where=#{query}'
+        elsif query.is_a? Hash
+          path += '?where='
+          path += query.map {|key,value| "#{key}='#{value}'"}.join(';')
+        end
         URI.escape(path)
       end
 
