@@ -4,13 +4,18 @@ module Verver
 
       def meta_friendly_name(name)
         stringified = name.to_s
-        return stringified.sub(/(^.)/) {|capture| capture.upcase} unless stringified.include?('_')
-        stringified.split('_').map { |part| part.sub(/(^.)/) {|capture| capture.upcase} }.join
+        return stringified.sub(/(^.)/) { |capture| capture.upcase } unless stringified.include?('_')
+        stringified.split('_').map { |part| part.sub(/(^.)/) { |capture| capture.upcase } }.join
       end
 
-      def ruby_friendly_name(name)
-        return name if /^[a-z_]*$/ =~ name
-        name.to_s.gsub(/[A-Z]/) {|s| '_' + s.to_s.downcase}.gsub(/\./,'').sub('_','')
+      def ruby_friendly_name(camel_cased_word)
+        word = camel_cased_word.to_s.dup
+        word.gsub!(/::/, '/')
+        word.gsub!(/([A-Z\d]+)([A-Z][a-z])/, '\1_\2')
+        word.gsub!(/([a-z\d])([A-Z])/, '\1_\2')
+        word.tr!("-", "_")
+        word.downcase!
+        word
       end
 
     end
