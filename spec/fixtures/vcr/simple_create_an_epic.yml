@@ -1,0 +1,145 @@
+--- 
+http_interactions: 
+- request: 
+    method: post
+    uri: http://admin:admin@localhost/VersionOne.Web/rest-1.v1/Data/Epic
+    body: 
+      encoding: US-ASCII
+      string: |
+        <?xml version="1.0"?>
+        <Asset>
+          <Attribute name="Name" act="set">test_4</Attribute>
+          <Relation name="Scope" act="set">
+            <Asset idref="Scope:0"/>
+          </Relation>
+        </Asset>
+
+    headers: {}
+
+  response: 
+    status: 
+      code: 200
+      message: OK
+    headers: 
+      Cache-Control: 
+      - no-cache
+      Pragma: 
+      - no-cache
+      Content-Length: 
+      - "291"
+      Content-Type: 
+      - text/xml; charset=utf-8
+      Expires: 
+      - "-1"
+      Server: 
+      - Microsoft-IIS/7.5
+      Set-Cookie: 
+      - .V1.LastAccess.VersionOne.Web.20=; expires=Fri, 15-Jun-2012 18:06:21 GMT; path=/; HttpOnly
+      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWlupx/wAk4Yzwj/Pzf0dSjKKxA8RhjEgrq0JKSisrZ9uiOM; path=/; HttpOnly
+      X-Powered-By: 
+      - ASP.NET
+      Date: 
+      - Thu, 14 Jun 2012 18:06:21 GMT
+    body: 
+      encoding: US-ASCII
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        
+        <Asset href="/VersionOne.Web/rest-1.v1/Data/Epic/1024/1026" id="Epic:1024:1026">
+        	<Attribute name="Name">test_4</Attribute>
+        	<Relation name="Scope">
+        		<Asset href="/VersionOne.Web/rest-1.v1/Data/Scope/0" idref="Scope:0" />
+        	</Relation>
+        </Asset>
+    http_version: 
+  recorded_at: Thu, 14 Jun 2012 18:06:21 GMT
+- request: 
+    method: get
+    uri: http://admin:admin@localhost/VersionOne.Web/rest-1.v1/Data/Epic?where=ID='Epic:1024:1026'
+    body: 
+      encoding: US-ASCII
+      string: ""
+    headers: {}
+
+  response: 
+    status: 
+      code: 200
+      message: OK
+    headers: 
+      Cache-Control: 
+      - no-cache
+      Pragma: 
+      - no-cache
+      Content-Length: 
+      - "1929"
+      Content-Type: 
+      - text/xml; charset=utf-8
+      Expires: 
+      - "-1"
+      Server: 
+      - Microsoft-IIS/7.5
+      Set-Cookie: 
+      - .V1.LastAccess.VersionOne.Web.20=; expires=Fri, 15-Jun-2012 18:06:22 GMT; path=/; HttpOnly
+      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWluByECA04Yzwj/Pzf0dSjKKxA20XZLPDMIwVWesOuEOlVS; path=/; HttpOnly
+      X-Powered-By: 
+      - ASP.NET
+      Date: 
+      - Thu, 14 Jun 2012 18:06:21 GMT
+    body: 
+      encoding: US-ASCII
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        
+        <Assets total="1" pageSize="2147483647" pageStart="0">
+        	<Asset href="/VersionOne.Web/rest-1.v1/Data/Epic/1024" id="Epic:1024">
+        		<Attribute name="AssetType">Epic</Attribute>
+        		<Attribute name="Source.Name" />
+        		<Attribute name="Timebox.Name" />
+        		<Attribute name="Ideas" />
+        		<Relation name="Category" />
+        		<Attribute name="RequestedBy" />
+        		<Attribute name="AssetState">64</Attribute>
+        		<Attribute name="Parent.Number" />
+        		<Attribute name="Super.Number" />
+        		<Attribute name="Priority.Name" />
+        		<Attribute name="Swag" />
+        		<Relation name="Status" />
+        		<Attribute name="Owners.Name" />
+        		<Relation name="SecurityScope">
+        			<Asset href="/VersionOne.Web/rest-1.v1/Data/Scope/0" idref="Scope:0" />
+        		</Relation>
+        		<Attribute name="ToDo" />
+        		<Attribute name="Super.Name" />
+        		<Attribute name="Description" />
+        		<Attribute name="Number">E-01023</Attribute>
+        		<Attribute name="Order">23</Attribute>
+        		<Relation name="Scope">
+        			<Asset href="/VersionOne.Web/rest-1.v1/Data/Scope/0" idref="Scope:0" />
+        		</Relation>
+        		<Relation name="Priority" />
+        		<Attribute name="Owners.Nickname" />
+        		<Attribute name="DetailEstimate" />
+        		<Attribute name="Parent.Name" />
+        		<Attribute name="Risk" />
+        		<Attribute name="Scope.Name">System (All Projects)</Attribute>
+        		<Attribute name="MorphedFrom.Name" />
+        		<Attribute name="Name">test_4</Attribute>
+        		<Relation name="Parent" />
+        		<Attribute name="Reference" />
+        		<Relation name="Source" />
+        		<Attribute name="Status.Name" />
+        		<Relation name="Team" />
+        		<Relation name="Owners" />
+        		<Relation name="MorphedFrom" />
+        		<Attribute name="MorphedFrom.Number" />
+        		<Attribute name="SecurityScope.Name">System (All Projects)</Attribute>
+        		<Relation name="Super" />
+        		<Relation name="Timebox" />
+        		<Attribute name="Value" />
+        		<Attribute name="Team.Name" />
+        		<Attribute name="Category.Name" />
+        	</Asset>
+        </Assets>
+    http_version: 
+  recorded_at: Thu, 14 Jun 2012 18:06:22 GMT
+recorded_with: VCR 2.1.1

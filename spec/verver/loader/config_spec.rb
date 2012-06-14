@@ -34,6 +34,12 @@ describe Verver::Loader::Config do
       ENV['PASSWORD'] = "passw0rd"
     end
 
+    after do
+      ENV['APP_URL'] = nil
+      ENV['LOGIN'] = nil
+      ENV['PASSWORD'] = nil
+    end
+
     it "Config#app_url reads the APP_URL environment variable" do
       subject.app_url.should eql('http://testsite.com/app')
     end

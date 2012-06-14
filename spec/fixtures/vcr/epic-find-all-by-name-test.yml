@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://admin:admin@localhost/VersionOne.Web/rest-1.v1/Data/Epic?where=Name='test'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '3745'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Expires:
+      - '-1'
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      Set-Cookie:
+      - .V1.LastAccess.VersionOne.Web.20=; expires=Fri, 15-Jun-2012 15:06:54 GMT;
+        path=/; HttpOnly
+      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWluteL78DQYzwj/Pzf0dSjKKxBv769eyVzFG/HF/IiKIBEI;
+        path=/; HttpOnly
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 14 Jun 2012 15:06:54 GMT
+    body:
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<Assets total=\"2\"
+        pageSize=\"2147483647\" pageStart=\"0\">\r\n\t<Asset href=\"/VersionOne.Web/rest-1.v1/Data/Epic/1002\"
+        id=\"Epic:1002\">\r\n\t\t<Attribute name=\"Swag\" />\r\n\t\t<Attribute name=\"Description\"
+        />\r\n\t\t<Attribute name=\"Ideas\" />\r\n\t\t<Relation name=\"SecurityScope\">\r\n\t\t\t<Asset
+        href=\"/VersionOne.Web/rest-1.v1/Data/Scope/0\" idref=\"Scope:0\" />\r\n\t\t</Relation>\r\n\t\t<Attribute
+        name=\"Priority.Name\" />\r\n\t\t<Attribute name=\"ToDo\" />\r\n\t\t<Attribute
+        name=\"Value\" />\r\n\t\t<Attribute name=\"Super.Name\" />\r\n\t\t<Relation
+        name=\"Owners\" />\r\n\t\t<Attribute name=\"RequestedBy\" />\r\n\t\t<Relation
+        name=\"Scope\">\r\n\t\t\t<Asset href=\"/VersionOne.Web/rest-1.v1/Data/Scope/0\"
+        idref=\"Scope:0\" />\r\n\t\t</Relation>\r\n\t\t<Relation name=\"Source\" />\r\n\t\t<Attribute
+        name=\"Reference\" />\r\n\t\t<Attribute name=\"Team.Name\" />\r\n\t\t<Relation
+        name=\"Category\" />\r\n\t\t<Relation name=\"Super\" />\r\n\t\t<Attribute
+        name=\"Number\">E-01001</Attribute>\r\n\t\t<Attribute name=\"Timebox.Name\"
+        />\r\n\t\t<Attribute name=\"Scope.Name\">System (All Projects)</Attribute>\r\n\t\t<Attribute
+        name=\"Owners.Nickname\" />\r\n\t\t<Relation name=\"Team\" />\r\n\t\t<Attribute
+        name=\"AssetState\">64</Attribute>\r\n\t\t<Attribute name=\"Parent.Number\"
+        />\r\n\t\t<Attribute name=\"Owners.Name\" />\r\n\t\t<Attribute name=\"Parent.Name\"
+        />\r\n\t\t<Relation name=\"Parent\" />\r\n\t\t<Attribute name=\"AssetType\">Epic</Attribute>\r\n\t\t<Relation
+        name=\"Priority\" />\r\n\t\t<Attribute name=\"Source.Name\" />\r\n\t\t<Attribute
+        name=\"Status.Name\" />\r\n\t\t<Attribute name=\"Order\">1</Attribute>\r\n\t\t<Relation
+        name=\"Status\" />\r\n\t\t<Attribute name=\"Category.Name\" />\r\n\t\t<Attribute
+        name=\"MorphedFrom.Name\" />\r\n\t\t<Relation name=\"Timebox\" />\r\n\t\t<Attribute
+        name=\"DetailEstimate\" />\r\n\t\t<Attribute name=\"Super.Number\" />\r\n\t\t<Relation
+        name=\"MorphedFrom\" />\r\n\t\t<Attribute name=\"Risk\" />\r\n\t\t<Attribute
+        name=\"Name\">test</Attribute>\r\n\t\t<Attribute name=\"MorphedFrom.Number\"
+        />\r\n\t\t<Attribute name=\"SecurityScope.Name\">System (All Projects)</Attribute>\r\n\t</Asset>\r\n\t<Asset
+        href=\"/VersionOne.Web/rest-1.v1/Data/Epic/1003\" id=\"Epic:1003\">\r\n\t\t<Attribute
+        name=\"Swag\" />\r\n\t\t<Attribute name=\"Description\" />\r\n\t\t<Attribute
+        name=\"Ideas\" />\r\n\t\t<Relation name=\"SecurityScope\">\r\n\t\t\t<Asset
+        href=\"/VersionOne.Web/rest-1.v1/Data/Scope/0\" idref=\"Scope:0\" />\r\n\t\t</Relation>\r\n\t\t<Attribute
+        name=\"Priority.Name\" />\r\n\t\t<Attribute name=\"ToDo\" />\r\n\t\t<Attribute
+        name=\"Value\" />\r\n\t\t<Attribute name=\"Super.Name\" />\r\n\t\t<Relation
+        name=\"Owners\" />\r\n\t\t<Attribute name=\"RequestedBy\" />\r\n\t\t<Relation
+        name=\"Scope\">\r\n\t\t\t<Asset href=\"/VersionOne.Web/rest-1.v1/Data/Scope/0\"
+        idref=\"Scope:0\" />\r\n\t\t</Relation>\r\n\t\t<Relation name=\"Source\" />\r\n\t\t<Attribute
+        name=\"Reference\" />\r\n\t\t<Attribute name=\"Team.Name\" />\r\n\t\t<Relation
+        name=\"Category\" />\r\n\t\t<Relation name=\"Super\" />\r\n\t\t<Attribute
+        name=\"Number\">E-01002</Attribute>\r\n\t\t<Attribute name=\"Timebox.Name\"
+        />\r\n\t\t<Attribute name=\"Scope.Name\">System (All Projects)</Attribute>\r\n\t\t<Attribute
+        name=\"Owners.Nickname\" />\r\n\t\t<Relation name=\"Team\" />\r\n\t\t<Attribute
+        name=\"AssetState\">64</Attribute>\r\n\t\t<Attribute name=\"Parent.Number\"
+        />\r\n\t\t<Attribute name=\"Owners.Name\" />\r\n\t\t<Attribute name=\"Parent.Name\"
+        />\r\n\t\t<Relation name=\"Parent\" />\r\n\t\t<Attribute name=\"AssetType\">Epic</Attribute>\r\n\t\t<Relation
+        name=\"Priority\" />\r\n\t\t<Attribute name=\"Source.Name\" />\r\n\t\t<Attribute
+        name=\"Status.Name\" />\r\n\t\t<Attribute name=\"Order\">2</Attribute>\r\n\t\t<Relation
+        name=\"Status\" />\r\n\t\t<Attribute name=\"Category.Name\" />\r\n\t\t<Attribute
+        name=\"MorphedFrom.Name\" />\r\n\t\t<Relation name=\"Timebox\" />\r\n\t\t<Attribute
+        name=\"DetailEstimate\" />\r\n\t\t<Attribute name=\"Super.Number\" />\r\n\t\t<Relation
+        name=\"MorphedFrom\" />\r\n\t\t<Attribute name=\"Risk\" />\r\n\t\t<Attribute
+        name=\"Name\">test</Attribute>\r\n\t\t<Attribute name=\"MorphedFrom.Number\"
+        />\r\n\t\t<Attribute name=\"SecurityScope.Name\">System (All Projects)</Attribute>\r\n\t</Asset>\r\n</Assets>"
+    http_version: !!null 
+  recorded_at: Thu, 14 Jun 2012 15:06:54 GMT
+recorded_with: VCR 2.0.1

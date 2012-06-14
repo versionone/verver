@@ -17,7 +17,8 @@ module Verver
       include Config
       include Utility
 
-      def initialize()
+      def initialize(base_asset_type = Asset)
+        @base_asset_type = base_asset_type
         # set base_uri and get ready to HTTParty!
         self.class.base_uri "#{app_url.sub(/\/$/, '')}/rest-1.v1/Data/"
       end
@@ -78,7 +79,7 @@ module Verver
         end
         #end
 
-        Asset.new(oid, attributes, {})
+        @base_asset_type.new(oid, attributes, {})
       end
 
       def format_post(order)
