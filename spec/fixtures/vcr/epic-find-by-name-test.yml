@@ -25,14 +25,14 @@ http_interactions:
       X-Aspnet-Version:
       - 4.0.30319
       Set-Cookie:
-      - .V1.LastAccess.VersionOne.Web.20=; expires=Fri, 15-Jun-2012 15:06:54 GMT;
+      - .V1.LastAccess.VersionOne.Web.20=; expires=Fri, 15-Jun-2012 19:54:05 GMT;
         path=/; HttpOnly
-      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWluDzTx8DQYzwj/Pzf0dSjKKxBN69fRZQDbrbawXXyHaBwB;
+      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWluV2pND10Yzwj/Pzf0dSjKKxCBBO3ZGTH21vpqeynvnT/V;
         path=/; HttpOnly
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 14 Jun 2012 15:06:54 GMT
+      - Thu, 14 Jun 2012 19:54:05 GMT
     body:
       encoding: US-ASCII
       string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<AssetType href=\"/VersionOne.Web/meta.v1/Epic\"
@@ -153,33 +153,99 @@ http_interactions:
         token=\"Epic.Moment\" displayname=\"AttributeDefinition'Moment'Epic\" attributetype=\"Opaque\"
         isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
         iscustom=\"False\"><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Moment\"
-        tokenref=\"Epic.Moment\" /></AttributeDefinition><AttributeDefinition name=\"Timebox\"
-        token=\"Epic.Timebox\" displayname=\"AttributeDefinition'Timebox'Epic\" attributetype=\"Relation\"
-        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
-        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Timebox\"
-        tokenref=\"Workitem.Timebox\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Timebox/Workitems\"
-        tokenref=\"Timebox.Workitems\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Timebox.EndDate\"
-        tokenref=\"Epic.Timebox.EndDate\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Timebox.Name\"
-        tokenref=\"Epic.Timebox.Name\" /><RelatedAsset nameref=\"Timebox\" href=\"/VersionOne.Web/meta.v1/Timebox\"
-        /></AttributeDefinition><AttributeDefinition name=\"Owners\" token=\"Epic.Owners\"
-        displayname=\"AttributeDefinition'Owners'Epic\" attributetype=\"Relation\"
-        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"True\" iscanned=\"True\"
-        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Owners\"
-        tokenref=\"Workitem.Owners\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Member/OwnedWorkitems\"
-        tokenref=\"Member.OwnedWorkitems\" /><RelatedAsset nameref=\"Member\" href=\"/VersionOne.Web/meta.v1/Member\"
-        /></AttributeDefinition><AttributeDefinition name=\"Team\" token=\"Epic.Team\"
-        displayname=\"AttributeDefinition'Team'Epic\" attributetype=\"Relation\" isreadonly=\"True\"
-        isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\" iscustom=\"False\"><Base
-        href=\"/VersionOne.Web/meta.v1/Workitem/Team\" tokenref=\"Workitem.Team\"
-        /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Team/Workitems\" tokenref=\"Team.Workitems\"
-        /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Team.Name\" tokenref=\"Epic.Team.Name\"
-        /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Team.Name\" tokenref=\"Epic.Team.Name\"
-        /><RelatedAsset nameref=\"Team\" href=\"/VersionOne.Web/meta.v1/Team\" /></AttributeDefinition><AttributeDefinition
-        name=\"Goals\" token=\"Epic.Goals\" displayname=\"AttributeDefinition'Goals'Epic\"
+        tokenref=\"Epic.Moment\" /></AttributeDefinition><AttributeDefinition name=\"Risk\"
+        token=\"Epic.Risk\" displayname=\"AttributeDefinition'Risk'Epic\" attributetype=\"Numeric\"
+        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
+        iscustom=\"False\"><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Risk\"
+        tokenref=\"Epic.Risk\" /></AttributeDefinition><AttributeDefinition name=\"Requests\"
+        token=\"Epic.Requests\" displayname=\"AttributeDefinition'Requests'Epic\"
         attributetype=\"Relation\" isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"True\"
-        iscanned=\"True\" iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Goals\"
-        tokenref=\"Workitem.Goals\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Goal/Workitems\"
-        tokenref=\"Goal.Workitems\" /><RelatedAsset nameref=\"Goal\" href=\"/VersionOne.Web/meta.v1/Goal\"
+        iscanned=\"True\" iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Request/Epics\"
+        tokenref=\"Request.Epics\" /><RelatedAsset nameref=\"Request\" href=\"/VersionOne.Web/meta.v1/Request\"
+        /></AttributeDefinition><AttributeDefinition name=\"BlockingIssues\" token=\"Epic.BlockingIssues\"
+        displayname=\"AttributeDefinition'BlockingIssues'Epic\" attributetype=\"Relation\"
+        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"True\" iscanned=\"True\"
+        iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Issue/BlockedEpics\"
+        tokenref=\"Issue.BlockedEpics\" /><RelatedAsset nameref=\"Issue\" href=\"/VersionOne.Web/meta.v1/Issue\"
+        /></AttributeDefinition><AttributeDefinition name=\"Issues\" token=\"Epic.Issues\"
+        displayname=\"AttributeDefinition'Issues'Epic\" attributetype=\"Relation\"
+        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"True\" iscanned=\"True\"
+        iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Issue/Epics\"
+        tokenref=\"Issue.Epics\" /><RelatedAsset nameref=\"Issue\" href=\"/VersionOne.Web/meta.v1/Issue\"
+        /></AttributeDefinition><AttributeDefinition name=\"MorphedFrom\" token=\"Epic.MorphedFrom\"
+        displayname=\"AttributeDefinition'MorphedFrom'Epic\" attributetype=\"Relation\"
+        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
+        iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Story/MorphedInto\"
+        tokenref=\"Story.MorphedInto\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/MorphedFrom.Order\"
+        tokenref=\"Epic.MorphedFrom.Order\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/MorphedFrom.Name\"
+        tokenref=\"Epic.MorphedFrom.Name\" /><RelatedAsset nameref=\"Story\" href=\"/VersionOne.Web/meta.v1/Story\"
+        /></AttributeDefinition><AttributeDefinition name=\"Category\" token=\"Epic.Category\"
+        displayname=\"AttributeDefinition'Category'Epic\" attributetype=\"Relation\"
+        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
+        iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/EpicCategory/Epics\"
+        tokenref=\"EpicCategory.Epics\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Category.Order\"
+        tokenref=\"Epic.Category.Order\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Category.Name\"
+        tokenref=\"Epic.Category.Name\" /><RelatedAsset nameref=\"EpicCategory\" href=\"/VersionOne.Web/meta.v1/EpicCategory\"
+        /></AttributeDefinition><AttributeDefinition name=\"Source\" token=\"Epic.Source\"
+        displayname=\"AttributeDefinition'Source'Epic\" attributetype=\"Relation\"
+        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
+        iscustom=\"True\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/StorySource/Epics\"
+        tokenref=\"StorySource.Epics\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Source.Order\"
+        tokenref=\"Epic.Source.Order\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Source.Name\"
+        tokenref=\"Epic.Source.Name\" /><RelatedAsset nameref=\"StorySource\" href=\"/VersionOne.Web/meta.v1/StorySource\"
+        /></AttributeDefinition><AttributeDefinition name=\"Priority\" token=\"Epic.Priority\"
+        displayname=\"AttributeDefinition'Priority'Epic\" attributetype=\"Relation\"
+        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
+        iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/EpicPriority/Epics\"
+        tokenref=\"EpicPriority.Epics\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Priority.Order\"
+        tokenref=\"Epic.Priority.Order\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Priority.Name\"
+        tokenref=\"Epic.Priority.Name\" /><RelatedAsset nameref=\"EpicPriority\" href=\"/VersionOne.Web/meta.v1/EpicPriority\"
+        /></AttributeDefinition><AttributeDefinition name=\"Status\" token=\"Epic.Status\"
+        displayname=\"AttributeDefinition'Status'Epic\" attributetype=\"Relation\"
+        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
+        iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/EpicStatus/Epics\"
+        tokenref=\"EpicStatus.Epics\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Status.Order\"
+        tokenref=\"Epic.Status.Order\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Status.Name\"
+        tokenref=\"Epic.Status.Name\" /><RelatedAsset nameref=\"EpicStatus\" href=\"/VersionOne.Web/meta.v1/EpicStatus\"
+        /></AttributeDefinition><AttributeDefinition name=\"Swag\" token=\"Epic.Swag\"
+        displayname=\"AttributeDefinition'Swag'Epic\" attributetype=\"Numeric\" isreadonly=\"False\"
+        isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\" iscustom=\"False\"><OrderByAttribute
+        href=\"/VersionOne.Web/meta.v1/Epic/Swag\" tokenref=\"Epic.Swag\" /></AttributeDefinition><AttributeDefinition
+        name=\"RequestedBy\" token=\"Epic.RequestedBy\" displayname=\"AttributeDefinition'RequestedBy'Epic\"
+        attributetype=\"Text\" isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\"
+        iscanned=\"True\" iscustom=\"True\"><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/RequestedBy\"
+        tokenref=\"Epic.RequestedBy\" /></AttributeDefinition><AttributeDefinition
+        name=\"Value\" token=\"Epic.Value\" displayname=\"AttributeDefinition'Value'Epic\"
+        attributetype=\"Numeric\" isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\"
+        iscanned=\"True\" iscustom=\"False\"><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Value\"
+        tokenref=\"Epic.Value\" /></AttributeDefinition><AttributeDefinition name=\"Order\"
+        token=\"Epic.Order\" displayname=\"AttributeDefinition'Order'Epic\" attributetype=\"Rank\"
+        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
+        iscustom=\"False\"><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Order\"
+        tokenref=\"Epic.Order\" /></AttributeDefinition><AttributeDefinition name=\"MentionedInExpressions\"
+        token=\"Epic.MentionedInExpressions\" displayname=\"AttributeDefinition'MentionedInExpressions'Epic\"
+        attributetype=\"Relation\" isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"True\"
+        iscanned=\"True\" iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/MentionedInExpressions\"
+        tokenref=\"BaseAsset.MentionedInExpressions\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Expression/Mentions\"
+        tokenref=\"Expression.Mentions\" /><RelatedAsset nameref=\"Expression\" href=\"/VersionOne.Web/meta.v1/Expression\"
+        /></AttributeDefinition><AttributeDefinition name=\"Ideas\" token=\"Epic.Ideas\"
+        displayname=\"AttributeDefinition'Ideas'Epic\" attributetype=\"LongInt\" isreadonly=\"False\"
+        isrequired=\"False\" ismultivalue=\"True\" iscanned=\"True\" iscustom=\"False\"><Base
+        href=\"/VersionOne.Web/meta.v1/BaseAsset/Ideas\" tokenref=\"BaseAsset.Ideas\"
+        /></AttributeDefinition><AttributeDefinition name=\"Messages\" token=\"Epic.Messages\"
+        displayname=\"AttributeDefinition'Messages'Epic\" attributetype=\"Relation\"
+        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"True\" iscanned=\"True\"
+        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/Messages\"
+        tokenref=\"BaseAsset.Messages\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Message/Asset\"
+        tokenref=\"Message.Asset\" /><RelatedAsset nameref=\"Message\" href=\"/VersionOne.Web/meta.v1/Message\"
+        /></AttributeDefinition><AttributeDefinition name=\"SecurityScope\" token=\"Epic.SecurityScope\"
+        displayname=\"AttributeDefinition'SecurityScope'Epic\" attributetype=\"Relation\"
+        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
+        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/SecurityScope\"
+        tokenref=\"BaseAsset.SecurityScope\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Scope/SecuredAssets\"
+        tokenref=\"Scope.SecuredAssets\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/SecurityScope.Name\"
+        tokenref=\"Epic.SecurityScope.Name\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/SecurityScope.Name\"
+        tokenref=\"Epic.SecurityScope.Name\" /><RelatedAsset nameref=\"Scope\" href=\"/VersionOne.Web/meta.v1/Scope\"
         /></AttributeDefinition><AttributeDefinition name=\"Super\" token=\"Epic.Super\"
         displayname=\"AttributeDefinition'Super'Epic\" attributetype=\"Relation\"
         isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
@@ -229,92 +295,25 @@ http_interactions:
         iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/SubsAndMe\"
         tokenref=\"Workitem.SubsAndMe\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Workitem/SuperAndMe\"
         tokenref=\"Workitem.SuperAndMe\" /><RelatedAsset nameref=\"Workitem\" href=\"/VersionOne.Web/meta.v1/Workitem\"
-        /></AttributeDefinition><AttributeDefinition name=\"Risk\" token=\"Epic.Risk\"
-        displayname=\"AttributeDefinition'Risk'Epic\" attributetype=\"Numeric\" isreadonly=\"False\"
-        isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\" iscustom=\"False\"><OrderByAttribute
-        href=\"/VersionOne.Web/meta.v1/Epic/Risk\" tokenref=\"Epic.Risk\" /></AttributeDefinition><AttributeDefinition
-        name=\"Requests\" token=\"Epic.Requests\" displayname=\"AttributeDefinition'Requests'Epic\"
-        attributetype=\"Relation\" isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"True\"
-        iscanned=\"True\" iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Request/Epics\"
-        tokenref=\"Request.Epics\" /><RelatedAsset nameref=\"Request\" href=\"/VersionOne.Web/meta.v1/Request\"
-        /></AttributeDefinition><AttributeDefinition name=\"BlockingIssues\" token=\"Epic.BlockingIssues\"
-        displayname=\"AttributeDefinition'BlockingIssues'Epic\" attributetype=\"Relation\"
+        /></AttributeDefinition><AttributeDefinition name=\"Goals\" token=\"Epic.Goals\"
+        displayname=\"AttributeDefinition'Goals'Epic\" attributetype=\"Relation\"
         isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"True\" iscanned=\"True\"
-        iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Issue/BlockedEpics\"
-        tokenref=\"Issue.BlockedEpics\" /><RelatedAsset nameref=\"Issue\" href=\"/VersionOne.Web/meta.v1/Issue\"
-        /></AttributeDefinition><AttributeDefinition name=\"Issues\" token=\"Epic.Issues\"
-        displayname=\"AttributeDefinition'Issues'Epic\" attributetype=\"Relation\"
+        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Goals\" tokenref=\"Workitem.Goals\"
+        /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Goal/Workitems\" tokenref=\"Goal.Workitems\"
+        /><RelatedAsset nameref=\"Goal\" href=\"/VersionOne.Web/meta.v1/Goal\" /></AttributeDefinition><AttributeDefinition
+        name=\"Team\" token=\"Epic.Team\" displayname=\"AttributeDefinition'Team'Epic\"
+        attributetype=\"Relation\" isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\"
+        iscanned=\"True\" iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Team\"
+        tokenref=\"Workitem.Team\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Team/Workitems\"
+        tokenref=\"Team.Workitems\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Team.Name\"
+        tokenref=\"Epic.Team.Name\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Team.Name\"
+        tokenref=\"Epic.Team.Name\" /><RelatedAsset nameref=\"Team\" href=\"/VersionOne.Web/meta.v1/Team\"
+        /></AttributeDefinition><AttributeDefinition name=\"Owners\" token=\"Epic.Owners\"
+        displayname=\"AttributeDefinition'Owners'Epic\" attributetype=\"Relation\"
         isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"True\" iscanned=\"True\"
-        iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Issue/Epics\"
-        tokenref=\"Issue.Epics\" /><RelatedAsset nameref=\"Issue\" href=\"/VersionOne.Web/meta.v1/Issue\"
-        /></AttributeDefinition><AttributeDefinition name=\"MorphedFrom\" token=\"Epic.MorphedFrom\"
-        displayname=\"AttributeDefinition'MorphedFrom'Epic\" attributetype=\"Relation\"
-        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
-        iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Story/MorphedInto\"
-        tokenref=\"Story.MorphedInto\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/MorphedFrom.Order\"
-        tokenref=\"Epic.MorphedFrom.Order\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/MorphedFrom.Name\"
-        tokenref=\"Epic.MorphedFrom.Name\" /><RelatedAsset nameref=\"Story\" href=\"/VersionOne.Web/meta.v1/Story\"
-        /></AttributeDefinition><AttributeDefinition name=\"Category\" token=\"Epic.Category\"
-        displayname=\"AttributeDefinition'Category'Epic\" attributetype=\"Relation\"
-        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
-        iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/EpicCategory/Epics\"
-        tokenref=\"EpicCategory.Epics\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Category.Order\"
-        tokenref=\"Epic.Category.Order\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Category.Name\"
-        tokenref=\"Epic.Category.Name\" /><RelatedAsset nameref=\"EpicCategory\" href=\"/VersionOne.Web/meta.v1/EpicCategory\"
-        /></AttributeDefinition><AttributeDefinition name=\"Name\" token=\"Epic.Name\"
-        displayname=\"AttributeDefinition'Name'Epic\" attributetype=\"Text\" isreadonly=\"False\"
-        isrequired=\"True\" ismultivalue=\"False\" iscanned=\"True\" iscustom=\"False\"><Base
-        href=\"/VersionOne.Web/meta.v1/BaseAsset/Name\" tokenref=\"BaseAsset.Name\"
-        /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Name\" tokenref=\"Epic.Name\"
-        /></AttributeDefinition><AttributeDefinition name=\"AssetState\" token=\"Epic.AssetState\"
-        displayname=\"AttributeDefinition'AssetState'Epic\" attributetype=\"State\"
-        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
-        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/AssetState\"
-        tokenref=\"BaseAsset.AssetState\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/AssetState\"
-        tokenref=\"Epic.AssetState\" /></AttributeDefinition><AttributeDefinition
-        name=\"Description\" token=\"Epic.Description\" displayname=\"AttributeDefinition'Description'Epic\"
-        attributetype=\"LongText\" isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\"
-        iscanned=\"True\" iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/Description\"
-        tokenref=\"BaseAsset.Description\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Description\"
-        tokenref=\"Epic.Description\" /></AttributeDefinition><AttributeDefinition
-        name=\"Reference\" token=\"Epic.Reference\" displayname=\"AttributeDefinition'Reference'Epic\"
-        attributetype=\"Text\" isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\"
-        iscanned=\"True\" iscustom=\"True\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Reference\"
-        tokenref=\"Workitem.Reference\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Reference\"
-        tokenref=\"Epic.Reference\" /></AttributeDefinition><AttributeDefinition name=\"ToDo\"
-        token=\"Epic.ToDo\" displayname=\"AttributeDefinition'ToDo'Epic\" attributetype=\"Numeric\"
-        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
-        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/ToDo\" tokenref=\"Workitem.ToDo\"
-        /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/ToDo\" tokenref=\"Epic.ToDo\"
-        /></AttributeDefinition><AttributeDefinition name=\"DetailEstimate\" token=\"Epic.DetailEstimate\"
-        displayname=\"AttributeDefinition'DetailEstimate'Epic\" attributetype=\"Numeric\"
-        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
-        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/DetailEstimate\"
-        tokenref=\"Workitem.DetailEstimate\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/DetailEstimate\"
-        tokenref=\"Epic.DetailEstimate\" /></AttributeDefinition><AttributeDefinition
-        name=\"Number\" token=\"Epic.Number\" displayname=\"AttributeDefinition'Number'Epic\"
-        attributetype=\"Text\" isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\"
-        iscanned=\"True\" iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Number\"
-        tokenref=\"Workitem.Number\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Number\"
-        tokenref=\"Epic.Number\" /></AttributeDefinition><AttributeDefinition name=\"Scope\"
-        token=\"Epic.Scope\" displayname=\"AttributeDefinition'Scope'Epic\" attributetype=\"Relation\"
-        isreadonly=\"False\" isrequired=\"True\" ismultivalue=\"False\" iscanned=\"True\"
-        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Scope\" tokenref=\"Workitem.Scope\"
-        /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Scope/Workitems\" tokenref=\"Scope.Workitems\"
-        /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Scope.Name\" tokenref=\"Epic.Scope.Name\"
-        /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Scope.Name\" tokenref=\"Epic.Scope.Name\"
-        /><RelatedAsset nameref=\"Scope\" href=\"/VersionOne.Web/meta.v1/Scope\" /></AttributeDefinition><AttributeDefinition
-        name=\"Actuals\" token=\"Epic.Actuals\" displayname=\"AttributeDefinition'Actuals'Epic\"
-        attributetype=\"Relation\" isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"True\"
-        iscanned=\"True\" iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Actuals\"
-        tokenref=\"Workitem.Actuals\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Actual/Workitem\"
-        tokenref=\"Actual.Workitem\" /><RelatedAsset nameref=\"Actual\" href=\"/VersionOne.Web/meta.v1/Actual\"
-        /></AttributeDefinition><AttributeDefinition name=\"Links\" token=\"Epic.Links\"
-        displayname=\"AttributeDefinition'Links'Epic\" attributetype=\"Relation\"
-        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"True\" iscanned=\"True\"
-        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/Links\"
-        tokenref=\"BaseAsset.Links\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Link/Asset\"
-        tokenref=\"Link.Asset\" /><RelatedAsset nameref=\"Link\" href=\"/VersionOne.Web/meta.v1/Link\"
+        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Owners\"
+        tokenref=\"Workitem.Owners\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Member/OwnedWorkitems\"
+        tokenref=\"Member.OwnedWorkitems\" /><RelatedAsset nameref=\"Member\" href=\"/VersionOne.Web/meta.v1/Member\"
         /></AttributeDefinition><AttributeDefinition name=\"Parent\" token=\"Epic.Parent\"
         displayname=\"AttributeDefinition'Parent'Epic\" attributetype=\"Relation\"
         isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
@@ -371,67 +370,70 @@ http_interactions:
         iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/Attachments\"
         tokenref=\"BaseAsset.Attachments\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Attachment/Asset\"
         tokenref=\"Attachment.Asset\" /><RelatedAsset nameref=\"Attachment\" href=\"/VersionOne.Web/meta.v1/Attachment\"
-        /></AttributeDefinition><AttributeDefinition name=\"SecurityScope\" token=\"Epic.SecurityScope\"
-        displayname=\"AttributeDefinition'SecurityScope'Epic\" attributetype=\"Relation\"
-        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
-        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/SecurityScope\"
-        tokenref=\"BaseAsset.SecurityScope\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Scope/SecuredAssets\"
-        tokenref=\"Scope.SecuredAssets\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/SecurityScope.Name\"
-        tokenref=\"Epic.SecurityScope.Name\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/SecurityScope.Name\"
-        tokenref=\"Epic.SecurityScope.Name\" /><RelatedAsset nameref=\"Scope\" href=\"/VersionOne.Web/meta.v1/Scope\"
-        /></AttributeDefinition><AttributeDefinition name=\"Messages\" token=\"Epic.Messages\"
-        displayname=\"AttributeDefinition'Messages'Epic\" attributetype=\"Relation\"
+        /></AttributeDefinition><AttributeDefinition name=\"Actuals\" token=\"Epic.Actuals\"
+        displayname=\"AttributeDefinition'Actuals'Epic\" attributetype=\"Relation\"
         isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"True\" iscanned=\"True\"
-        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/Messages\"
-        tokenref=\"BaseAsset.Messages\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Message/Asset\"
-        tokenref=\"Message.Asset\" /><RelatedAsset nameref=\"Message\" href=\"/VersionOne.Web/meta.v1/Message\"
-        /></AttributeDefinition><AttributeDefinition name=\"Ideas\" token=\"Epic.Ideas\"
-        displayname=\"AttributeDefinition'Ideas'Epic\" attributetype=\"LongInt\" isreadonly=\"False\"
-        isrequired=\"False\" ismultivalue=\"True\" iscanned=\"True\" iscustom=\"False\"><Base
-        href=\"/VersionOne.Web/meta.v1/BaseAsset/Ideas\" tokenref=\"BaseAsset.Ideas\"
-        /></AttributeDefinition><AttributeDefinition name=\"Order\" token=\"Epic.Order\"
-        displayname=\"AttributeDefinition'Order'Epic\" attributetype=\"Rank\" isreadonly=\"False\"
-        isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\" iscustom=\"False\"><OrderByAttribute
-        href=\"/VersionOne.Web/meta.v1/Epic/Order\" tokenref=\"Epic.Order\" /></AttributeDefinition><AttributeDefinition
-        name=\"MentionedInExpressions\" token=\"Epic.MentionedInExpressions\" displayname=\"AttributeDefinition'MentionedInExpressions'Epic\"
-        attributetype=\"Relation\" isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"True\"
-        iscanned=\"True\" iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/MentionedInExpressions\"
-        tokenref=\"BaseAsset.MentionedInExpressions\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Expression/Mentions\"
-        tokenref=\"Expression.Mentions\" /><RelatedAsset nameref=\"Expression\" href=\"/VersionOne.Web/meta.v1/Expression\"
-        /></AttributeDefinition><AttributeDefinition name=\"Source\" token=\"Epic.Source\"
-        displayname=\"AttributeDefinition'Source'Epic\" attributetype=\"Relation\"
-        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
-        iscustom=\"True\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/StorySource/Epics\"
-        tokenref=\"StorySource.Epics\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Source.Order\"
-        tokenref=\"Epic.Source.Order\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Source.Name\"
-        tokenref=\"Epic.Source.Name\" /><RelatedAsset nameref=\"StorySource\" href=\"/VersionOne.Web/meta.v1/StorySource\"
-        /></AttributeDefinition><AttributeDefinition name=\"Priority\" token=\"Epic.Priority\"
-        displayname=\"AttributeDefinition'Priority'Epic\" attributetype=\"Relation\"
-        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
-        iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/EpicPriority/Epics\"
-        tokenref=\"EpicPriority.Epics\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Priority.Order\"
-        tokenref=\"Epic.Priority.Order\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Priority.Name\"
-        tokenref=\"Epic.Priority.Name\" /><RelatedAsset nameref=\"EpicPriority\" href=\"/VersionOne.Web/meta.v1/EpicPriority\"
-        /></AttributeDefinition><AttributeDefinition name=\"Status\" token=\"Epic.Status\"
-        displayname=\"AttributeDefinition'Status'Epic\" attributetype=\"Relation\"
-        isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
-        iscustom=\"False\"><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/EpicStatus/Epics\"
-        tokenref=\"EpicStatus.Epics\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Status.Order\"
-        tokenref=\"Epic.Status.Order\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Status.Name\"
-        tokenref=\"Epic.Status.Name\" /><RelatedAsset nameref=\"EpicStatus\" href=\"/VersionOne.Web/meta.v1/EpicStatus\"
-        /></AttributeDefinition><AttributeDefinition name=\"Swag\" token=\"Epic.Swag\"
-        displayname=\"AttributeDefinition'Swag'Epic\" attributetype=\"Numeric\" isreadonly=\"False\"
-        isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\" iscustom=\"False\"><OrderByAttribute
-        href=\"/VersionOne.Web/meta.v1/Epic/Swag\" tokenref=\"Epic.Swag\" /></AttributeDefinition><AttributeDefinition
-        name=\"RequestedBy\" token=\"Epic.RequestedBy\" displayname=\"AttributeDefinition'RequestedBy'Epic\"
+        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Actuals\"
+        tokenref=\"Workitem.Actuals\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Actual/Workitem\"
+        tokenref=\"Actual.Workitem\" /><RelatedAsset nameref=\"Actual\" href=\"/VersionOne.Web/meta.v1/Actual\"
+        /></AttributeDefinition><AttributeDefinition name=\"Links\" token=\"Epic.Links\"
+        displayname=\"AttributeDefinition'Links'Epic\" attributetype=\"Relation\"
+        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"True\" iscanned=\"True\"
+        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/Links\"
+        tokenref=\"BaseAsset.Links\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Link/Asset\"
+        tokenref=\"Link.Asset\" /><RelatedAsset nameref=\"Link\" href=\"/VersionOne.Web/meta.v1/Link\"
+        /></AttributeDefinition><AttributeDefinition name=\"Timebox\" token=\"Epic.Timebox\"
+        displayname=\"AttributeDefinition'Timebox'Epic\" attributetype=\"Relation\"
+        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
+        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Timebox\"
+        tokenref=\"Workitem.Timebox\" /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Timebox/Workitems\"
+        tokenref=\"Timebox.Workitems\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Timebox.EndDate\"
+        tokenref=\"Epic.Timebox.EndDate\" /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Timebox.Name\"
+        tokenref=\"Epic.Timebox.Name\" /><RelatedAsset nameref=\"Timebox\" href=\"/VersionOne.Web/meta.v1/Timebox\"
+        /></AttributeDefinition><AttributeDefinition name=\"Scope\" token=\"Epic.Scope\"
+        displayname=\"AttributeDefinition'Scope'Epic\" attributetype=\"Relation\"
+        isreadonly=\"False\" isrequired=\"True\" ismultivalue=\"False\" iscanned=\"True\"
+        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Scope\" tokenref=\"Workitem.Scope\"
+        /><ReciprocalRelation href=\"/VersionOne.Web/meta.v1/Scope/Workitems\" tokenref=\"Scope.Workitems\"
+        /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Scope.Name\" tokenref=\"Epic.Scope.Name\"
+        /><DisplayByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Scope.Name\" tokenref=\"Epic.Scope.Name\"
+        /><RelatedAsset nameref=\"Scope\" href=\"/VersionOne.Web/meta.v1/Scope\" /></AttributeDefinition><AttributeDefinition
+        name=\"Number\" token=\"Epic.Number\" displayname=\"AttributeDefinition'Number'Epic\"
+        attributetype=\"Text\" isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\"
+        iscanned=\"True\" iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Number\"
+        tokenref=\"Workitem.Number\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Number\"
+        tokenref=\"Epic.Number\" /></AttributeDefinition><AttributeDefinition name=\"Reference\"
+        token=\"Epic.Reference\" displayname=\"AttributeDefinition'Reference'Epic\"
         attributetype=\"Text\" isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\"
-        iscanned=\"True\" iscustom=\"True\"><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/RequestedBy\"
-        tokenref=\"Epic.RequestedBy\" /></AttributeDefinition><AttributeDefinition
-        name=\"Value\" token=\"Epic.Value\" displayname=\"AttributeDefinition'Value'Epic\"
-        attributetype=\"Numeric\" isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\"
-        iscanned=\"True\" iscustom=\"False\"><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Value\"
-        tokenref=\"Epic.Value\" /></AttributeDefinition><AttributeDefinition name=\"CanUpdate\"
-        token=\"Epic.CanUpdate\" displayname=\"AttributeDefinition'CanUpdate'Epic\"
+        iscanned=\"True\" iscustom=\"True\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/Reference\"
+        tokenref=\"Workitem.Reference\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Reference\"
+        tokenref=\"Epic.Reference\" /></AttributeDefinition><AttributeDefinition name=\"ToDo\"
+        token=\"Epic.ToDo\" displayname=\"AttributeDefinition'ToDo'Epic\" attributetype=\"Numeric\"
+        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
+        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/ToDo\" tokenref=\"Workitem.ToDo\"
+        /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/ToDo\" tokenref=\"Epic.ToDo\"
+        /></AttributeDefinition><AttributeDefinition name=\"DetailEstimate\" token=\"Epic.DetailEstimate\"
+        displayname=\"AttributeDefinition'DetailEstimate'Epic\" attributetype=\"Numeric\"
+        isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\" iscanned=\"True\"
+        iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/DetailEstimate\"
+        tokenref=\"Workitem.DetailEstimate\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/DetailEstimate\"
+        tokenref=\"Epic.DetailEstimate\" /></AttributeDefinition><AttributeDefinition
+        name=\"Description\" token=\"Epic.Description\" displayname=\"AttributeDefinition'Description'Epic\"
+        attributetype=\"LongText\" isreadonly=\"False\" isrequired=\"False\" ismultivalue=\"False\"
+        iscanned=\"True\" iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/Description\"
+        tokenref=\"BaseAsset.Description\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Description\"
+        tokenref=\"Epic.Description\" /></AttributeDefinition><AttributeDefinition
+        name=\"Name\" token=\"Epic.Name\" displayname=\"AttributeDefinition'Name'Epic\"
+        attributetype=\"Text\" isreadonly=\"False\" isrequired=\"True\" ismultivalue=\"False\"
+        iscanned=\"True\" iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/Name\"
+        tokenref=\"BaseAsset.Name\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/Name\"
+        tokenref=\"Epic.Name\" /></AttributeDefinition><AttributeDefinition name=\"AssetState\"
+        token=\"Epic.AssetState\" displayname=\"AttributeDefinition'AssetState'Epic\"
+        attributetype=\"State\" isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\"
+        iscanned=\"True\" iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/BaseAsset/AssetState\"
+        tokenref=\"BaseAsset.AssetState\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/AssetState\"
+        tokenref=\"Epic.AssetState\" /></AttributeDefinition><AttributeDefinition
+        name=\"CanUpdate\" token=\"Epic.CanUpdate\" displayname=\"AttributeDefinition'CanUpdate'Epic\"
         attributetype=\"Boolean\" isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\"
         iscanned=\"True\" iscustom=\"False\"><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/CanUpdate\"
         tokenref=\"Epic.CanUpdate\" /></AttributeDefinition><AttributeDefinition name=\"IsReadOnly\"
@@ -534,21 +536,21 @@ http_interactions:
         attributetype=\"Boolean\" isreadonly=\"True\" isrequired=\"False\" ismultivalue=\"False\"
         iscanned=\"True\" iscustom=\"False\"><Base href=\"/VersionOne.Web/meta.v1/Workitem/CheckInactivate\"
         tokenref=\"Workitem.CheckInactivate\" /><OrderByAttribute href=\"/VersionOne.Web/meta.v1/Epic/CheckInactivate\"
-        tokenref=\"Epic.CheckInactivate\" /></AttributeDefinition><Operation name=\"Delete\"><Validator
-        href=\"/VersionOne.Web/meta.v1/Epic/IsDeletable\" tokenref=\"Epic.IsDeletable\"
-        /></Operation><Operation name=\"Undelete\"><Validator href=\"/VersionOne.Web/meta.v1/Epic/IsUndeletable\"
-        tokenref=\"Epic.IsUndeletable\" /></Operation><Operation name=\"Copy\"><Validator
-        href=\"/VersionOne.Web/meta.v1/Epic/CheckCopy\" tokenref=\"Epic.CheckCopy\"
-        /></Operation><Operation name=\"GenerateSubEpic\"><Validator href=\"/VersionOne.Web/meta.v1/Epic/CheckGenerateSubEpic\"
-        tokenref=\"Epic.CheckGenerateSubEpic\" /></Operation><Operation name=\"GenerateSubStory\"><Validator
-        href=\"/VersionOne.Web/meta.v1/Epic/CheckGenerateSubStory\" tokenref=\"Epic.CheckGenerateSubStory\"
-        /></Operation><Operation name=\"Inactivate\"><Validator href=\"/VersionOne.Web/meta.v1/Epic/CheckInactivate\"
-        tokenref=\"Epic.CheckInactivate\" /></Operation><Operation name=\"Reactivate\"><Validator
+        tokenref=\"Epic.CheckInactivate\" /></AttributeDefinition><Operation name=\"GenerateSubEpic\"><Validator
+        href=\"/VersionOne.Web/meta.v1/Epic/CheckGenerateSubEpic\" tokenref=\"Epic.CheckGenerateSubEpic\"
+        /></Operation><Operation name=\"GenerateSubStory\"><Validator href=\"/VersionOne.Web/meta.v1/Epic/CheckGenerateSubStory\"
+        tokenref=\"Epic.CheckGenerateSubStory\" /></Operation><Operation name=\"Reactivate\"><Validator
         href=\"/VersionOne.Web/meta.v1/Epic/CheckReactivate\" tokenref=\"Epic.CheckReactivate\"
+        /></Operation><Operation name=\"Inactivate\"><Validator href=\"/VersionOne.Web/meta.v1/Epic/CheckInactivate\"
+        tokenref=\"Epic.CheckInactivate\" /></Operation><Operation name=\"Copy\"><Validator
+        href=\"/VersionOne.Web/meta.v1/Epic/CheckCopy\" tokenref=\"Epic.CheckCopy\"
         /></Operation><Operation name=\"ShallowCopy\"><Validator href=\"/VersionOne.Web/meta.v1/Epic/CheckShallowCopy\"
-        tokenref=\"Epic.CheckShallowCopy\" /></Operation></AssetType>"
+        tokenref=\"Epic.CheckShallowCopy\" /></Operation><Operation name=\"Undelete\"><Validator
+        href=\"/VersionOne.Web/meta.v1/Epic/IsUndeletable\" tokenref=\"Epic.IsUndeletable\"
+        /></Operation><Operation name=\"Delete\"><Validator href=\"/VersionOne.Web/meta.v1/Epic/IsDeletable\"
+        tokenref=\"Epic.IsDeletable\" /></Operation></AssetType>"
     http_version: !!null 
-  recorded_at: Thu, 14 Jun 2012 15:06:54 GMT
+  recorded_at: Thu, 14 Jun 2012 19:54:05 GMT
 - request:
     method: get
     uri: http://admin:admin@localhost/VersionOne.Web/rest-1.v1/Data/Epic?where=Name='test'
@@ -576,67 +578,66 @@ http_interactions:
       X-Aspnet-Version:
       - 4.0.30319
       Set-Cookie:
-      - .V1.LastAccess.VersionOne.Web.20=; expires=Fri, 15-Jun-2012 15:06:54 GMT;
+      - .V1.LastAccess.VersionOne.Web.20=; expires=Fri, 15-Jun-2012 19:54:05 GMT;
         path=/; HttpOnly
-      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWludGj08DQYzwj/Pzf0dSjKKxBWODt1TiKY33SBBmEAlRsy;
+      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWluh1BQD10Yzwj/Pzf0dSjKKxCrQI+6P5bJpSD89+4kPFQY;
         path=/; HttpOnly
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 14 Jun 2012 15:06:54 GMT
+      - Thu, 14 Jun 2012 19:54:05 GMT
     body:
       encoding: US-ASCII
       string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<Assets total=\"2\"
         pageSize=\"2147483647\" pageStart=\"0\">\r\n\t<Asset href=\"/VersionOne.Web/rest-1.v1/Data/Epic/1002\"
-        id=\"Epic:1002\">\r\n\t\t<Attribute name=\"Swag\" />\r\n\t\t<Attribute name=\"Description\"
-        />\r\n\t\t<Attribute name=\"Ideas\" />\r\n\t\t<Relation name=\"SecurityScope\">\r\n\t\t\t<Asset
-        href=\"/VersionOne.Web/rest-1.v1/Data/Scope/0\" idref=\"Scope:0\" />\r\n\t\t</Relation>\r\n\t\t<Attribute
-        name=\"Priority.Name\" />\r\n\t\t<Attribute name=\"ToDo\" />\r\n\t\t<Attribute
-        name=\"Value\" />\r\n\t\t<Attribute name=\"Super.Name\" />\r\n\t\t<Relation
-        name=\"Owners\" />\r\n\t\t<Attribute name=\"RequestedBy\" />\r\n\t\t<Relation
+        id=\"Epic:1002\">\r\n\t\t<Attribute name=\"Risk\" />\r\n\t\t<Attribute name=\"MorphedFrom.Number\"
+        />\r\n\t\t<Attribute name=\"AssetType\">Epic</Attribute>\r\n\t\t<Attribute
+        name=\"Source.Name\" />\r\n\t\t<Attribute name=\"Team.Name\" />\r\n\t\t<Attribute
+        name=\"Owners.Name\" />\r\n\t\t<Attribute name=\"Super.Name\" />\r\n\t\t<Attribute
+        name=\"Status.Name\" />\r\n\t\t<Attribute name=\"DetailEstimate\" />\r\n\t\t<Relation
         name=\"Scope\">\r\n\t\t\t<Asset href=\"/VersionOne.Web/rest-1.v1/Data/Scope/0\"
-        idref=\"Scope:0\" />\r\n\t\t</Relation>\r\n\t\t<Relation name=\"Source\" />\r\n\t\t<Attribute
-        name=\"Reference\" />\r\n\t\t<Attribute name=\"Team.Name\" />\r\n\t\t<Relation
-        name=\"Category\" />\r\n\t\t<Relation name=\"Super\" />\r\n\t\t<Attribute
-        name=\"Number\">E-01001</Attribute>\r\n\t\t<Attribute name=\"Timebox.Name\"
-        />\r\n\t\t<Attribute name=\"Scope.Name\">System (All Projects)</Attribute>\r\n\t\t<Attribute
-        name=\"Owners.Nickname\" />\r\n\t\t<Relation name=\"Team\" />\r\n\t\t<Attribute
-        name=\"AssetState\">64</Attribute>\r\n\t\t<Attribute name=\"Parent.Number\"
-        />\r\n\t\t<Attribute name=\"Owners.Name\" />\r\n\t\t<Attribute name=\"Parent.Name\"
-        />\r\n\t\t<Relation name=\"Parent\" />\r\n\t\t<Attribute name=\"AssetType\">Epic</Attribute>\r\n\t\t<Relation
-        name=\"Priority\" />\r\n\t\t<Attribute name=\"Source.Name\" />\r\n\t\t<Attribute
-        name=\"Status.Name\" />\r\n\t\t<Attribute name=\"Order\">1</Attribute>\r\n\t\t<Relation
-        name=\"Status\" />\r\n\t\t<Attribute name=\"Category.Name\" />\r\n\t\t<Attribute
-        name=\"MorphedFrom.Name\" />\r\n\t\t<Relation name=\"Timebox\" />\r\n\t\t<Attribute
-        name=\"DetailEstimate\" />\r\n\t\t<Attribute name=\"Super.Number\" />\r\n\t\t<Relation
-        name=\"MorphedFrom\" />\r\n\t\t<Attribute name=\"Risk\" />\r\n\t\t<Attribute
-        name=\"Name\">test</Attribute>\r\n\t\t<Attribute name=\"MorphedFrom.Number\"
-        />\r\n\t\t<Attribute name=\"SecurityScope.Name\">System (All Projects)</Attribute>\r\n\t</Asset>\r\n\t<Asset
-        href=\"/VersionOne.Web/rest-1.v1/Data/Epic/1003\" id=\"Epic:1003\">\r\n\t\t<Attribute
-        name=\"Swag\" />\r\n\t\t<Attribute name=\"Description\" />\r\n\t\t<Attribute
-        name=\"Ideas\" />\r\n\t\t<Relation name=\"SecurityScope\">\r\n\t\t\t<Asset
+        idref=\"Scope:0\" />\r\n\t\t</Relation>\r\n\t\t<Attribute name=\"Number\">E-01001</Attribute>\r\n\t\t<Attribute
+        name=\"Order\">1</Attribute>\r\n\t\t<Attribute name=\"Reference\" />\r\n\t\t<Attribute
+        name=\"MorphedFrom.Name\" />\r\n\t\t<Attribute name=\"Name\">test</Attribute>\r\n\t\t<Attribute
+        name=\"RequestedBy\" />\r\n\t\t<Attribute name=\"Value\" />\r\n\t\t<Attribute
+        name=\"AssetState\">64</Attribute>\r\n\t\t<Attribute name=\"SecurityScope.Name\">System
+        (All Projects)</Attribute>\r\n\t\t<Attribute name=\"Timebox.Name\" />\r\n\t\t<Attribute
+        name=\"Description\" />\r\n\t\t<Relation name=\"Parent\" />\r\n\t\t<Relation
+        name=\"MorphedFrom\" />\r\n\t\t<Attribute name=\"Priority.Name\" />\r\n\t\t<Attribute
+        name=\"Super.Number\" />\r\n\t\t<Attribute name=\"ToDo\" />\r\n\t\t<Attribute
+        name=\"Owners.Nickname\" />\r\n\t\t<Attribute name=\"Category.Name\" />\r\n\t\t<Attribute
+        name=\"Parent.Number\" />\r\n\t\t<Attribute name=\"Swag\" />\r\n\t\t<Relation
+        name=\"Source\" />\r\n\t\t<Relation name=\"Status\" />\r\n\t\t<Relation name=\"Category\"
+        />\r\n\t\t<Attribute name=\"Parent.Name\" />\r\n\t\t<Relation name=\"Priority\"
+        />\r\n\t\t<Relation name=\"Team\" />\r\n\t\t<Relation name=\"Timebox\" />\r\n\t\t<Attribute
+        name=\"Scope.Name\">System (All Projects)</Attribute>\r\n\t\t<Relation name=\"Super\"
+        />\r\n\t\t<Relation name=\"Owners\" />\r\n\t\t<Relation name=\"SecurityScope\">\r\n\t\t\t<Asset
         href=\"/VersionOne.Web/rest-1.v1/Data/Scope/0\" idref=\"Scope:0\" />\r\n\t\t</Relation>\r\n\t\t<Attribute
-        name=\"Priority.Name\" />\r\n\t\t<Attribute name=\"ToDo\" />\r\n\t\t<Attribute
-        name=\"Value\" />\r\n\t\t<Attribute name=\"Super.Name\" />\r\n\t\t<Relation
-        name=\"Owners\" />\r\n\t\t<Attribute name=\"RequestedBy\" />\r\n\t\t<Relation
+        name=\"Ideas\" />\r\n\t</Asset>\r\n\t<Asset href=\"/VersionOne.Web/rest-1.v1/Data/Epic/1003\"
+        id=\"Epic:1003\">\r\n\t\t<Attribute name=\"Risk\" />\r\n\t\t<Attribute name=\"MorphedFrom.Number\"
+        />\r\n\t\t<Attribute name=\"AssetType\">Epic</Attribute>\r\n\t\t<Attribute
+        name=\"Source.Name\" />\r\n\t\t<Attribute name=\"Team.Name\" />\r\n\t\t<Attribute
+        name=\"Owners.Name\" />\r\n\t\t<Attribute name=\"Super.Name\" />\r\n\t\t<Attribute
+        name=\"Status.Name\" />\r\n\t\t<Attribute name=\"DetailEstimate\" />\r\n\t\t<Relation
         name=\"Scope\">\r\n\t\t\t<Asset href=\"/VersionOne.Web/rest-1.v1/Data/Scope/0\"
-        idref=\"Scope:0\" />\r\n\t\t</Relation>\r\n\t\t<Relation name=\"Source\" />\r\n\t\t<Attribute
-        name=\"Reference\" />\r\n\t\t<Attribute name=\"Team.Name\" />\r\n\t\t<Relation
-        name=\"Category\" />\r\n\t\t<Relation name=\"Super\" />\r\n\t\t<Attribute
-        name=\"Number\">E-01002</Attribute>\r\n\t\t<Attribute name=\"Timebox.Name\"
-        />\r\n\t\t<Attribute name=\"Scope.Name\">System (All Projects)</Attribute>\r\n\t\t<Attribute
-        name=\"Owners.Nickname\" />\r\n\t\t<Relation name=\"Team\" />\r\n\t\t<Attribute
-        name=\"AssetState\">64</Attribute>\r\n\t\t<Attribute name=\"Parent.Number\"
-        />\r\n\t\t<Attribute name=\"Owners.Name\" />\r\n\t\t<Attribute name=\"Parent.Name\"
-        />\r\n\t\t<Relation name=\"Parent\" />\r\n\t\t<Attribute name=\"AssetType\">Epic</Attribute>\r\n\t\t<Relation
-        name=\"Priority\" />\r\n\t\t<Attribute name=\"Source.Name\" />\r\n\t\t<Attribute
-        name=\"Status.Name\" />\r\n\t\t<Attribute name=\"Order\">2</Attribute>\r\n\t\t<Relation
-        name=\"Status\" />\r\n\t\t<Attribute name=\"Category.Name\" />\r\n\t\t<Attribute
-        name=\"MorphedFrom.Name\" />\r\n\t\t<Relation name=\"Timebox\" />\r\n\t\t<Attribute
-        name=\"DetailEstimate\" />\r\n\t\t<Attribute name=\"Super.Number\" />\r\n\t\t<Relation
-        name=\"MorphedFrom\" />\r\n\t\t<Attribute name=\"Risk\" />\r\n\t\t<Attribute
-        name=\"Name\">test</Attribute>\r\n\t\t<Attribute name=\"MorphedFrom.Number\"
-        />\r\n\t\t<Attribute name=\"SecurityScope.Name\">System (All Projects)</Attribute>\r\n\t</Asset>\r\n</Assets>"
+        idref=\"Scope:0\" />\r\n\t\t</Relation>\r\n\t\t<Attribute name=\"Number\">E-01002</Attribute>\r\n\t\t<Attribute
+        name=\"Order\">2</Attribute>\r\n\t\t<Attribute name=\"Reference\" />\r\n\t\t<Attribute
+        name=\"MorphedFrom.Name\" />\r\n\t\t<Attribute name=\"Name\">test</Attribute>\r\n\t\t<Attribute
+        name=\"RequestedBy\" />\r\n\t\t<Attribute name=\"Value\" />\r\n\t\t<Attribute
+        name=\"AssetState\">64</Attribute>\r\n\t\t<Attribute name=\"SecurityScope.Name\">System
+        (All Projects)</Attribute>\r\n\t\t<Attribute name=\"Timebox.Name\" />\r\n\t\t<Attribute
+        name=\"Description\" />\r\n\t\t<Relation name=\"Parent\" />\r\n\t\t<Relation
+        name=\"MorphedFrom\" />\r\n\t\t<Attribute name=\"Priority.Name\" />\r\n\t\t<Attribute
+        name=\"Super.Number\" />\r\n\t\t<Attribute name=\"ToDo\" />\r\n\t\t<Attribute
+        name=\"Owners.Nickname\" />\r\n\t\t<Attribute name=\"Category.Name\" />\r\n\t\t<Attribute
+        name=\"Parent.Number\" />\r\n\t\t<Attribute name=\"Swag\" />\r\n\t\t<Relation
+        name=\"Source\" />\r\n\t\t<Relation name=\"Status\" />\r\n\t\t<Relation name=\"Category\"
+        />\r\n\t\t<Attribute name=\"Parent.Name\" />\r\n\t\t<Relation name=\"Priority\"
+        />\r\n\t\t<Relation name=\"Team\" />\r\n\t\t<Relation name=\"Timebox\" />\r\n\t\t<Attribute
+        name=\"Scope.Name\">System (All Projects)</Attribute>\r\n\t\t<Relation name=\"Super\"
+        />\r\n\t\t<Relation name=\"Owners\" />\r\n\t\t<Relation name=\"SecurityScope\">\r\n\t\t\t<Asset
+        href=\"/VersionOne.Web/rest-1.v1/Data/Scope/0\" idref=\"Scope:0\" />\r\n\t\t</Relation>\r\n\t\t<Attribute
+        name=\"Ideas\" />\r\n\t</Asset>\r\n</Assets>"
     http_version: !!null 
-  recorded_at: Thu, 14 Jun 2012 15:06:54 GMT
+  recorded_at: Thu, 14 Jun 2012 19:54:05 GMT
 recorded_with: VCR 2.0.1

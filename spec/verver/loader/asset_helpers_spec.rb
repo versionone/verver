@@ -5,6 +5,7 @@ describe "Finding an epic" do
 
   class Epic < Verver::Loader::Asset
     include Verver::Loader::AssetHelpers
+
   end
 
   context "when trying to find one by name" do
@@ -66,5 +67,42 @@ describe "Finding an epic" do
       @epic.should be_instance_of Epic
     end
   end
+
+end
+
+describe "Creating a member using the helpers" do
+
+  class Member < Verver::Loader::Asset
+    include Verver::Loader::AssetHelpers
+
+    def self.create_simple(name, email=nil, create_login = true)
+      attrs = {
+          name: name,
+          nickname: name,
+          email: email,
+          notify_via_email: true,
+          default_role: "Role:1",
+          scopes: "Scope:1041"
+      }
+
+      attrs.merge!({username: name, password: name}) if create_login
+      create(attrs)
+    end
+  end
+
+  context "doing a simple create" do
+
+    before do
+      VCR.use_cassette('create-member-2', :match_requests_on => [:uri, :body, :headers]) do
+        @member = Member.create_simple("Bobby")
+      end
+    end
+
+    it "should have the correct name" do
+      @member.name.should == "Bobby"
+    end
+
+  end
+
 
 end

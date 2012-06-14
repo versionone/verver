@@ -23,11 +23,15 @@ module Verver
       end
 
       def simple_attributes
-        all_attributes.select { |key,attr| (attr[:type] != "Relation") && (!attr[:multivalue]) }
+        all_attributes.select { |key, attr| (attr[:type] != "Relation") && (!attr[:multivalue]) }
       end
 
       def relation_attributes
-        all_attributes.select { |key,attr| (attr[:type] == "Relation") && (!attr[:multivalue]) }
+        all_attributes.select { |key, attr| (attr[:type] == "Relation") && (!attr[:multivalue]) }
+      end
+
+      def mvr_attributes
+        all_attributes.select { |key, attr| (attr[:type] == "Relation") && attr[:multivalue] }
       end
 
       def all_attributes
@@ -50,24 +54,26 @@ module Verver
 
     module AssetHelpers
       module ClassMethods
-        def meta
-          @meta
-        end
-
         def create(options)
-          operation = Verver::Loader::FindOrCreateOperation.new(@asset_name) do |asset|
+          operation = Verver::Loader::FindOrCreateOperation.new(asset_name) do |asset|
 
             # simple attributes
             asset.attributes do |asset_attributes|
-              options.select { |k, v| @meta.simple_attributes.include?(k.to_s) }.each do |k, v|
+              options.select { |k, v| meta.simple_attributes.include?(k.to_s) }.each do |k, v|
                 asset_attributes.send k, v
               end
             end
 
             # simple relations
             asset.relations do |asset_relations|
-              options.select { |k, v| @meta.relation_attributes.include?(k.to_s) }.each do |k, v|
+              options.select { |k, v| meta.relation_attributes.include?(k.to_s) }.each do |k, v|
                 asset_relations.send k, v
+              end
+            end
+
+            asset.mvrs do |mvrs|
+              options.select { |k, v| meta.mvr_attributes.include?(k.to_s) }.each do |k, v|
+                mvrs.send k, v
               end
             end
 
@@ -79,10 +85,10 @@ module Verver
         end
 
         def method_missing(symbol, *args)
-          if (symbol =~ /^find_all_by_(.*)$/) && (attr = @meta.all_attributes[$1])
-            Verver::Loader::API.new(self).lookup_all(@asset_name, {attr[:actual_name] => args[0]})
-          elsif (symbol =~ /^find_by_(.*)$/) && (attr = @meta.all_attributes[$1])
-            Verver::Loader::API.new(self).lookup(@asset_name, attr[:actual_name], args[0])
+          if (symbol =~ /^find_all_by_(.*)$/) && (attr = meta.all_attributes[$1])
+            Verver::Loader::API.new(self).lookup_all(asset_name, {attr[:actual_name] => args[0]})
+          elsif (symbol =~ /^find_by_(.*)$/) && (attr = meta.all_attributes[$1])
+            Verver::Loader::API.new(self).lookup(asset_name, attr[:actual_name], args[0])
           else
             raise NoMethodError, "No method `#{symbol}` on `#{self}`"
           end
@@ -91,13 +97,17 @@ module Verver
 
       end
 
-        class << self
-          def included(base)
-            base.instance_variable_set :@meta, Meta.new(base.name)
-            base.instance_variable_set :@asset_name, base.name
-            base.extend(ClassMethods)
+      class << self
+        def included(base)
+          base.define_singleton_method :meta do
+            Meta.new(base.name)
           end
+          base.define_singleton_method :asset_name do
+            base.name
+          end
+          base.extend(ClassMethods)
         end
+      end
     end
   end
 end
