@@ -24,13 +24,13 @@ module Verver
       end
 
       def lookup(asset, attribute_name, attribute_value)
-        xml = get_xml(asset, {attribute_name=> attribute_value})
+        xml = get_xml(asset, {:where => {attribute_name => attribute_value}})
         return false if total_assets_found(xml) == 0
         build_asset_from_lookup(xml.xpath("//Assets/Asset").first)
       end
 
-      def lookup_all(asset, query = nil)
-        xml = get_xml(asset, query)
+      def lookup_all(asset, options = {})
+        xml = get_xml(asset, options)
         xml.xpath("//Assets/Asset").map { |a| build_asset_from_lookup(a) }
       end
 
@@ -67,19 +67,45 @@ module Verver
         xml.xpath('//Assets').first()['total'].to_i
       end
 
-      def build_asset_from_lookup(found_asset)
-        attributes = {}
-        #oid = ''
+      def build_asset_from_lookup(asset)
+        oid = asset['id']
 
-        #xml.xpath('//Assets/Asset').each do |found_asset|
-        oid = found_asset['id']
-        found_asset.xpath('Attribute').each do |attribute|
-          attribute_key = ruby_friendly_name(attribute['name']).to_sym
-          attributes[attribute_key] = attribute.content
+        attributes = asset.xpath('./Attribute').map do |attribute|
+          key = ruby_friendly_name(attribute['name']).to_sym
+          value = (attribute.xpath("./Value").length > 0) ? attribute.xpath("./Value").map { |x| x.content } : attribute.content
+          [key, value]
         end
-        #end
 
-        @base_asset_type.new(oid, attributes, {})
+        relations = asset.xpath("./Relation").select do |relation|
+          relation.xpath("./Asset/@idref").any?
+        end.map do |relation|
+          rel_name = relation["name"]
+          id = relation.xpath("./Asset/@idref").map { |x| x.value }
+
+          rel_values = asset.xpath("./Attribute[starts-with(@name,'#{rel_name}.')]").select do |attribute|
+            attribute['name'] =~ /^#{rel_name}\.[^.]+$/
+          end.map do |attribute|
+            key = ruby_friendly_name(attribute['name'].gsub(/^#{rel_name}\./, "")).to_sym
+            value = (attribute.xpath("./Value").length > 0) ? attribute.xpath("./Value").map { |x| x.content } : [attribute.content]
+            [key, value]
+          end << [:id, id]
+
+          keys, values = rel_values.transpose
+
+          result = (0...values.first.length).map do |x| #size of array of hashes to end with
+            obj = {}
+            keys.each_with_index do |key, y|
+              obj[key] = values[y][x]
+            end
+            obj
+          end
+
+          asset_list = result.map { |r| Asset.new(r[:id], r) }
+
+          [ruby_friendly_name(rel_name).to_sym, asset_list]
+        end
+
+        @base_asset_type.new(oid, Hash[[*attributes]].merge(Hash[[*relations]]))
       end
 
       def format_post(order)

@@ -8,7 +8,7 @@ module Verver
       attr_reader :oid
       include Utility
 
-      def initialize(oid, attributes={}, relations={})
+      def initialize(oid, attributes={})
 
         @attributes = attributes
 
@@ -20,8 +20,6 @@ module Verver
             return value
           end
         end
-
-        @relations = relations
       end
 
       def fetch(key)

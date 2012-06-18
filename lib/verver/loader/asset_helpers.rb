@@ -84,9 +84,18 @@ module Verver
           api.create(operation)
         end
 
+
+        def find(options={})
+          find_all(options).first
+        end
+
+        def find_all(options={})
+          Verver::Loader::API.new(self).lookup_all(asset_name, options)
+        end
+
         def method_missing(symbol, *args)
           if (symbol =~ /^find_all_by_(.*)$/) && (attr = meta.all_attributes[$1])
-            Verver::Loader::API.new(self).lookup_all(asset_name, {attr[:actual_name] => args[0]})
+            Verver::Loader::API.new(self).lookup_all(asset_name, {:where => { attr[:actual_name] => args[0] } })
           elsif (symbol =~ /^find_by_(.*)$/) && (attr = meta.all_attributes[$1])
             Verver::Loader::API.new(self).lookup(asset_name, attr[:actual_name], args[0])
           else

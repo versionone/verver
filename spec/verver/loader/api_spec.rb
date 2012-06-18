@@ -58,7 +58,7 @@ describe Verver::Loader::API do
         end
       end
 
-      subject.stub(:lookup) { Verver::Loader::Asset.new('Asset:42', {}, {}) }
+      subject.stub(:lookup) { Verver::Loader::Asset.new('Asset:42', {}) }
 
       VCR.use_cassette('create-member', :match_requests_on => [:uri, :body, :headers]) do
         @created_asset = subject.create(operation)
@@ -76,7 +76,7 @@ describe Verver::Loader::API do
 
     before(:all) do
       VCR.use_cassette('multiple-members-found', :match_requests_on => [:uri, :body, :headers] ) do
-        @members = subject.lookup_all(:member, {'Nickname'=> 'bob'})
+        @members = subject.lookup_all(:member, {:where=>{'Nickname'=> 'bob'}})
       end
     end
 
@@ -87,6 +87,5 @@ describe Verver::Loader::API do
     it "should only contain assets" do
       @members.each { |member| member.should be_an_instance_of(Verver::Loader::Asset) }
     end
-
   end
 end

@@ -68,6 +68,20 @@ describe "Finding an epic" do
     end
   end
 
+  context "where selecting a casted MVR relationship attributes" do
+
+    before do
+      VCR.use_cassette('selecting-casted-mvr-relationship', :match_requests_on => [:uri, :body, :headers]) do
+        @epic = Epic.find(:where=>{:ID=>"Epic:1013"}, :select=>["Subs:Story"])
+      end
+    end
+
+    it "should parse correctly" do
+      @epic.subs_story.count.should == 1
+    end
+
+  end
+
 end
 
 describe "Creating a member using the helpers" do
@@ -103,6 +117,5 @@ describe "Creating a member using the helpers" do
     end
 
   end
-
 
 end

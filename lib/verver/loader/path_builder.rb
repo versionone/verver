@@ -1,5 +1,6 @@
 require('uri')
 require('verver/loader/utility')
+require 'active_support/core_ext'
 
 module Verver
   module Loader
@@ -8,15 +9,27 @@ module Verver
 
       extend Verver::Loader::Utility
 
-      def self.search_path(asset, query)
+      def self.search_path(asset, options)
+
         path = "/#{meta_friendly_name(asset)}"
-        if query.is_a? String
-          path += '?where=#{query}'
-        elsif query.is_a? Hash
-          path += '?where='
-          path += query.map {|key,value| "#{key}='#{value}'"}.join(';')
+        where = options[:where]
+        select = options[:select]
+
+        query = {}
+
+        if where.is_a? String
+          query[:where] = where
+        elsif where.is_a? Hash
+          query[:where] = where.map {|key,value| "#{key}='#{value}'"}.join(';')
         end
-        URI.escape(path)
+
+        if select.is_a? String
+          query[:sel] = select
+        elsif select.is_a? Array
+          query[:sel] = select.join(',')
+        end
+
+        URI.escape(path) + "?" + query.to_query
       end
 
       def self.create_path(asset)

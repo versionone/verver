@@ -19,6 +19,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency "nokogiri", "~> 1.5.0"
   gem.add_runtime_dependency "rest-client", "~> 1.6.7"
   gem.add_runtime_dependency "httparty", "~> 0.8.1"
+  gem.add_runtime_dependency "activesupport", "~> 3.2.2"
   # So that we can develop and run specs on UNIX boxes, only add dependency on Windows.
   gem.add_runtime_dependency 'win32console' if RUBY_PLATFORM =~ /mswin32/ || RUBY_PLATFORM =~ /mingw32/
 
