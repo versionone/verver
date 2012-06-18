@@ -108,12 +108,16 @@ module Verver
 
       class << self
         def included(base)
+          class_name = base.name.split('::').last
+
           base.define_singleton_method :meta do
-            Meta.new(base.name)
+            Meta.new(class_name)
           end
+
           base.define_singleton_method :asset_name do
-            base.name
+            class_name
           end
+
           base.extend(ClassMethods)
         end
       end
