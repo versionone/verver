@@ -72,7 +72,7 @@ describe "Finding an epic" do
 
     before do
       VCR.use_cassette('selecting-casted-mvr-relationship', :match_requests_on => [:uri, :body, :headers]) do
-        @epic = Epic.find(:where=>{:ID=>"Epic:1013"}, :select=>["Subs:Story"])
+        @epic = Epic.find(:where=>{:ID=>"Epic:1014"}, :select=>["Subs:Story"])
       end
     end
 
@@ -96,7 +96,7 @@ describe "Creating a member using the helpers" do
           email: email,
           notify_via_email: true,
           default_role: "Role:1",
-          scopes: "Scope:1041"
+          scopes: "Scope:0"
       }
 
       attrs.merge!({username: name, password: name}) if create_login
