@@ -24,41 +24,41 @@ http_interactions:
       Server: 
       - Microsoft-IIS/7.5
       Set-Cookie: 
-      - .V1.LastAccess.VersionOne.Web.20=; expires=Thu, 09-Feb-2012 18:30:27 GMT; path=/; HttpOnly
-      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWlupjR19Hy0zgj/Pzf0dSjKKxDbt3pPOUsqshYZQ9EhpR3t; path=/; HttpOnly
+      - .V1.LastAccess.VersionOne.Web.20=; expires=Wed, 27-Jun-2012 20:53:09 GMT; path=/; HttpOnly
+      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWluzCe2TNMhzwj/Pzf0dSjKKxA1Iy/q1uGc8ayoANdHamWA; path=/; HttpOnly
       X-Powered-By: 
       - ASP.NET
       Date: 
-      - Wed, 08 Feb 2012 18:30:30 GMT
+      - Tue, 26 Jun 2012 20:53:11 GMT
     body: |-
       <?xml version="1.0" encoding="UTF-8"?>
       
       <Assets total="1" pageSize="2147483647" pageStart="0">
       	<Asset href="/VersionOne.Web/rest-1.v1/Data/Member/20" id="Member:20">
-      		<Attribute name="SecurityScope.Name" />
-      		<Attribute name="Name">Administrator</Attribute>
-      		<Attribute name="UsesLicense">false</Attribute>
-      		<Relation name="Followers" />
-      		<Attribute name="Email" />
-      		<Attribute name="Nickname">Admin</Attribute>
-      		<Attribute name="Description" />
-      		<Attribute name="DefaultRole.Name">Role.Name'System Admin</Attribute>
-      		<Attribute name="Phone" />
-      		<Attribute name="AssetType">Member</Attribute>
-      		<Relation name="SecurityScope" />
+      		<Attribute name="Followers.Name" />
+      		<Attribute name="SendConversationEmails">true</Attribute>
+      		<Attribute name="Username">admin</Attribute>
       		<Attribute name="Followers.Nickname" />
-      		<Attribute name="AssetState">64</Attribute>
+      		<Attribute name="Ideas" />
+      		<Attribute name="AssetType">Member</Attribute>
+      		<Attribute name="IsLoginDisabled">false</Attribute>
+      		<Attribute name="DefaultRole.Name">Role.Name'System Admin</Attribute>
+      		<Attribute name="Nickname">Admin</Attribute>
+      		<Attribute name="NotifyViaEmail">false</Attribute>
       		<Relation name="DefaultRole">
       			<Asset href="/VersionOne.Web/rest-1.v1/Data/Role/1" idref="Role:1" />
       		</Relation>
-      		<Attribute name="Ideas" />
-      		<Attribute name="NotifyViaEmail">false</Attribute>
-      		<Attribute name="Username">admin</Attribute>
-      		<Attribute name="IsLoginDisabled">false</Attribute>
-      		<Attribute name="SendConversationEmails">true</Attribute>
-      		<Attribute name="Followers.Name" />
+      		<Attribute name="Email" />
+      		<Attribute name="Name">Administrator</Attribute>
+      		<Attribute name="Phone" />
+      		<Relation name="Followers" />
+      		<Attribute name="UsesLicense">false</Attribute>
+      		<Relation name="SecurityScope" />
+      		<Attribute name="SecurityScope.Name" />
+      		<Attribute name="Description" />
+      		<Attribute name="AssetState">64</Attribute>
       	</Asset>
       </Assets>
     http_version: 
-  recorded_at: Wed, 08 Feb 2012 18:30:30 GMT
+  recorded_at: Tue, 26 Jun 2012 20:53:11 GMT
 recorded_with: VCR 2.0.0.rc1

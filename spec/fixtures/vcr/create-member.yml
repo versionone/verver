@@ -34,27 +34,25 @@ http_interactions:
       - "-1"
       Server: 
       - Microsoft-IIS/7.5
-      X-Aspnet-Version: 
-      - 4.0.30319
       Set-Cookie: 
-      - .V1.LastAccess.VersionOne.Web.20=; expires=Thu, 16-Feb-2012 18:07:49 GMT; path=/; HttpOnly
-      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWluhf8P9Pm5zgj/Pzf0dSjKKxAZ9yFrWtsqVe5mppieV0lr; path=/; HttpOnly
+      - .V1.LastAccess.VersionOne.Web.20=; expires=Wed, 27-Jun-2012 20:53:12 GMT; path=/; HttpOnly
+      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWluLNtoTtMhzwj/Pzf0dSjKKxALZFdrV/IYoY0zUwmDl6U6; path=/; HttpOnly
       X-Powered-By: 
       - ASP.NET
       Date: 
-      - Wed, 15 Feb 2012 18:07:49 GMT
+      - Tue, 26 Jun 2012 20:53:11 GMT
     body: |-
       <?xml version="1.0" encoding="UTF-8"?>
       
-      <Asset href="/VersionOne.Web/rest-1.v1/Data/Member/1389/1470" id="Member:1389:1470">
+      <Asset href="/VersionOne.Web/rest-1.v1/Data/Member/1009/1014" id="Member:1009:1014">
+      	<Attribute name="Name">bobname</Attribute>
       	<Relation name="DefaultRole">
       		<Asset href="/VersionOne.Web/rest-1.v1/Data/Role/1" idref="Role:1" />
       	</Relation>
+      	<Attribute name="Nickname">bobnick</Attribute>
       	<Attribute name="Username">bobuid</Attribute>
       	<Attribute name="Password" />
-      	<Attribute name="Nickname">bobnick</Attribute>
-      	<Attribute name="Name">bobname</Attribute>
       </Asset>
     http_version: 
-  recorded_at: Wed, 15 Feb 2012 18:07:49 GMT
+  recorded_at: Tue, 26 Jun 2012 20:53:12 GMT
 recorded_with: VCR 2.0.0.rc1

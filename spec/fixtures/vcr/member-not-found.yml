@@ -24,16 +24,16 @@ http_interactions:
       Server: 
       - Microsoft-IIS/7.5
       Set-Cookie: 
-      - .V1.LastAccess.VersionOne.Web.20=; expires=Thu, 09-Feb-2012 18:34:47 GMT; path=/; HttpOnly
-      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWluqd+gj320zgj/Pzf0dSjKKxDDMitqS6e/A9re00p2NpU7; path=/; HttpOnly
+      - .V1.LastAccess.VersionOne.Web.20=; expires=Wed, 27-Jun-2012 20:53:11 GMT; path=/; HttpOnly
+      - .V1.Ticket.VersionOne.Web=HFZlcnNpb25PbmUuV2ViLkF1dGhlbnRpY2F0b3IUAAAABWFkbWluK7xkTtMhzwj/Pzf0dSjKKxDzhiDpLmC2ktF5r61ArV2R; path=/; HttpOnly
       X-Powered-By: 
       - ASP.NET
       Date: 
-      - Wed, 08 Feb 2012 18:34:47 GMT
+      - Tue, 26 Jun 2012 20:53:11 GMT
     body: |-
       <?xml version="1.0" encoding="UTF-8"?>
       
       <Assets total="0" pageSize="2147483647" pageStart="0" />
     http_version: 
-  recorded_at: Wed, 08 Feb 2012 18:34:47 GMT
+  recorded_at: Tue, 26 Jun 2012 20:53:11 GMT
 recorded_with: VCR 2.0.0.rc1
