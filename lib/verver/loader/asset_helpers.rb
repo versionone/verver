@@ -73,7 +73,7 @@ module Verver
 
             asset.mvrs do |mvrs|
               options.select { |k, v| meta.mvr_attributes.include?(k.to_s) }.each do |k, v|
-                mvrs.send k, v
+                mvrs.send k, *v
               end
             end
 
