@@ -1,3 +1,3 @@
 module Verver
-  VERSION = "0.0.15"
+  VERSION = "0.0.15.1"
 end

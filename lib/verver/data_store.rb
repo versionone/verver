@@ -1,6 +1,8 @@
 module Verver
   module DataStore
 
+    #test
+
     def self.server
       ENV['DB_SERVER'] || '.'
     end
