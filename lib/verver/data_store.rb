@@ -23,10 +23,39 @@ module Verver
       File.join(File.expand_path('..', __FILE__), %w[support drop_db.sql])
     end
 
-    def self.old_story(daysold)
+    def self.old_story(storyname, daysold, projectoid)
       file = File.join(File.expand_path('..', __FILE__), %w[support create_old_story.sql])
-      system(" \"sqlcmd.exe -i " + file + " -s " + server + " -d " + db_name  + " -v DaysOld=" + daysold.to_s + "\"")
+      if (Verver::Jenkins.job_name == 'local-job')
+        command = " sqlcmd.exe -i \"" + file + "\" -s " + get_database_name_from_config() + " -d " + db_name  + " -v DaysOld=" + daysold.to_s + " ScopeOid=" + projectoid.delete("Scope:") + " StoryName=\"" + storyname + "\""
+      else
+        command = " sqlcmd.exe -i \"" + file + "\" -s " + server + " -d " + db_name  + " -v DaysOld=" + daysold.to_s + " ScopeOid=" + projectoid.delete("Scope:") + " StoryName=\"" + storyname + "\""
+      end
+      puts command
+
+      system(command)
     end
 
+    def self.get_database_name_from_config
+      connection_string = value_from_config("ConnectionString")
+      values = connection_string.split("\;")
+      value = (values.select {|item| item.starts_with?("Database")}).first
+      return value.split("=")[1]
+    end
+
+    def self.value_from_config(key)
+        user_config_file = File.join(ROOT, %W[VersionOne.Web user.config])
+        web_config_file = File.join(ROOT, %W[VersionOne.Web web.config])
+        value_from_config_file(user_config_file, key) or value_from_config_file(web_config_file, key)
+    end
+
+    def self.value_from_config_file(file, key)
+        if FileTest.exists? file
+          config = Nokogiri::XML(File.open file)
+          config_node = config.css("appSettings add[key=#{key}]")
+          if config_node.length > 0
+            return config_node.attr('value').value
+          end
+        end
+    end
   end
-end
+
