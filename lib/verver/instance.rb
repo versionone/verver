@@ -31,7 +31,8 @@ module Verver
     end
 
     def database_server
-      @options.fetch(:database_server) { "(local)" }
+      default = if ENV["database_server"] then ENV["database_server"] else "(local)" end
+      @options.fetch(:database_server, default)
     end
 
     def path
