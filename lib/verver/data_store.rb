@@ -26,12 +26,12 @@ module Verver
     def self.old_story(storyname, daysold, projectoid)
       file = File.join(File.expand_path('..', __FILE__), %w[support create_old_story.sql])
       if (Verver::Jenkins.job_name == 'local-job')
-        command = " sqlcmd.exe -i \"" + file + "\" -s " + get_database_name_from_config() + " -d " + db_name  + " -v DaysOld=" + daysold.to_s + " ScopeOid=" + projectoid.delete("Scope:") + " StoryName=\"" + storyname + "\""
+        servername = get_database_name_from_config()
       else
-        command = " sqlcmd.exe -i \"" + file + "\" -s " + server + " -d " + db_name  + " -v DaysOld=" + daysold.to_s + " ScopeOid=" + projectoid.delete("Scope:") + " StoryName=\"" + storyname + "\""
+        servername = server
       end
-      puts command
-
+      command = " sqlcmd.exe -i \"#{file}\" -s #{servername} -d #{db_name} -v DaysOld=#{daysold.to_s} ScopeOid=#{projectoid.delete("Scope:")} StoryName=\"#{storyname}\""
+      puts(command)
       system(command)
     end
 
