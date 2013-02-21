@@ -39,6 +39,7 @@ module Verver
         xml = format_post(operation.render()[:data])
         path = Verver::Loader::PathBuilder.create_path(asset)
         response = self.class.post(path, {basic_auth: {username: login, password: password}, body: xml})
+        raise StandardError, "Could not create execute operation.\n\n#{response.body}\n\n" unless response.success?
         xml = Nokogiri::XML::Document.parse(response.body)
         oid = parse_oid_from(xml)
         lookup(operation.asset, 'ID', oid)
@@ -59,6 +60,7 @@ module Verver
       def get_xml(asset, query)
         path = Verver::Loader::PathBuilder.search_path(asset, query)
         response = self.class.get(path, {basic_auth: {username: login, password: password}})
+        raise StandardError, "Could not create execute operation.\n\n#{response.body}\n\n" unless response.success?
         Nokogiri::XML::Document.parse(response.body)
       end
 
