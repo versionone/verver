@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Verver::VERSION
 
-  gem.add_runtime_dependency "rake", "~> 0.9.2"
+  gem.add_runtime_dependency "rake", "> 0.9.2"
   gem.add_runtime_dependency "nokogiri", "~> 1.5.0"
   gem.add_runtime_dependency "rest-client", "~> 1.6.7"
   gem.add_runtime_dependency "httparty", "~> 0.8.1"
